@@ -1,10 +1,7 @@
 <?php
 
-// Get new instance of PDO object
-$dbc = new PDO('mysql:host=127.0.0.1;dbname=adlister_db', 'adlister_user', 'codeup');
-
-// Tell PDO to throw exceptions on error
-$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'adlist_db_config.php';
+require_once 'adlist_db_connect.php';
 
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
