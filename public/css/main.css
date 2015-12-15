@@ -2,7 +2,13 @@
 
 
 body {
-	background-color: green;
+	background-color: #FAEBD7;
 }
 
+#nav-background {
+	background-image: url(/img/children-happy.png)
+}
 
+.logo {
+	font-size: 48px;
+}
