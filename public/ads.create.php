@@ -6,14 +6,16 @@ require_once '../utils/Input.php';
 
 function insertListing($dbc, $listing_date, $item_name, $price, $image, $description) {
 	
-	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description) 
-		VALUES (:listing_date, :item_name, :price, :image, :description)";
+	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, user_id) 
+		VALUES (:listing_date, :item_name, :price, :image, :description, :user_id)";
 	$stmt = $dbc->prepare($insert);
 	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
 	$stmt->bindValue(':price', $price, PDO::PARAM_STR);
 	$stmt->bindValue(':image', $description , PDO::PARAM_STR);
 	$stmt->bindValue(':description', $image, PDO::PARAM_INT);
+
+	$stmt->bindValue(':user_id', ??? , PDO::PARAM_INT)
 	$stmt->execute();
 }
 
@@ -54,23 +56,23 @@ function pageController($dbc) {
 
 	if(!empty($_POST)){
 		// add inputed data into datebase
-		if (Input::notEmpty('listing_date') 
-			&& Input::notEmpty('item_name') 
-			&& Input::notEmpty('price') 
-			&& Input::notEmpty('image') 
-			&& Input::notEmpty('description') ){
+		if (Input::noInput('listing_date') 
+			&& Input::noInput('item_name') 
+			&& Input::noInput('price') 
+			&& Input::noInput('image') 
+			&& Input::noInput('description') ){
 				
 		// if no errors were thrown runs insert park
-			if(empty($errors)) {
-				insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
-				$errors = array();
-			}
-
-		} elseif (Input::notEmpty('deleted_item_name')) {
-			$deleteListing($dbc);
-		} else {
-			echo "Please make a valid entry.";
+				if(empty($errors)) {
+					insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
+				} elseif (Input::noInput('deleted_item_name')) {
+					$deleteListing($dbc);
+				} 
+				// else {
+				// 	echo "Please make a valid entry.";
+				// }
 		}
+
 	}
 	
 }
@@ -83,52 +85,81 @@ function pageController($dbc) {
 pageController($dbc);
 
 ?>
+
 <!doctype html>
-<html>
+
+<html lang="en">
 <head>
-	<title>Listings Database</title>
+
+	
+	<?php require_once('../views/partials/head.php'); ?>
+	<title>Creating Ad</title>
 </head>
 <body>
-	<h4>We are on page <?= $page ?></h4>
 
-	<?php if ($page > 1) { ?>
-		<a href="?page=<?= $page-1 ?>">Previous</a>
-	<?php } ?>
-	<?php if ($page < $pageLimiter) { ?>
-		<a href="?page=<?= $page+1 ?>">Next</a>
-	<?php } ?>
+	<div class="container">
 
-	<table>
-		<tr>
-			<th>Listing Date</th>
-			<th>Item Name</th>
-			<th>$</th>
-			<th>Image</th>
-			<th>Description</th>
-		</tr>
-		<?php foreach($listings as $listing): ?>
-			<tr>	
-				<th><?= $listing['item_name'] ?>
-					<form method="POST">
-						<button name="deleted_item_name" type="submit" value="<?=$listing['item_name']?>"></button>
-					</form>
-				</th>
-				<th><?= $listing['item_name'] ?></th>
-				<th><?= $listing['price'] ?></th>
-				<th><?= $listing['image'] ?></th>
-				<th><?= $listing['description'] ?></th>
-			</tr>
-		<?php endforeach ?>
-	</table>
-	<div>
-			<form method="POST">
-        		<input type="text" id="listing_date" name="listing_date" placeholder="Listing Date">
-        		<input type="text" id="item_name" name="item_name" placeholder="Item Name">
-        		<input type="text" id="price" name="price" placeholder="Price">
-          		<input type="text" id="image" name="image" placeholder="Image">
-          		<input type="textarea" id="description" name="description" placeholder="Description">
-        		<input type="submit" value="add">	
+
+		/* Took out a table here that we can add later. */
+
+
+		<div>
+
+			<h2>Signed in as </h2>
+
+		</div>
+
+			
+	
+
+		<div>
+			<form method="POST" role="form" action="ads.create.php">
+
+				<div class="form-group">
+					<label for="listing_date" class="control-label col-sm-2">Date:</label>
+					 <div class="col-sm-10">
+	        			<input type="date" id="listing_date" name="listing_date" placeholder="Listing Date" class="form-control">
+	        		</div>
+	        	</div>
+
+	        	<div class="form-group">
+	        		<label for="item_name" class="control-label col-sm-2">Item:</label>
+	        		<div class="col-sm-10">
+	        			<input type="text" id="item_name" name="item_name" placeholder="Item Name" class="form-control">
+	        		</div>
+	        	</div>
+
+	        	<div class="form-group">
+	        		<label for="price" class="control-label col-sm-2">Price:</label>
+	        		<div class="col-sm-10">
+	        			<input type="text" id="price" name="price" placeholder="Price in Dollars ($)" class="form-control">
+	        		</div>
+	        	</div>
+
+	        	<div class="form-group">
+	        		<label for="image" class="control-label col-sm-2">Image:</label>
+	        		<div class="col-sm-10">
+	          			<input type="text" id="image" name="image" placeholder="Image" class="form-control" step="any">
+	          		</div>
+	          	</div>
+
+	          	<div class="form-group">
+	          		<label for="description" class="control-label col-sm-2">Description:</label>
+	          		<div class="col-sm-10">
+	          			<textarea id="description" name="description" placeholder="Description" row="5" class="form-control"></textarea>
+	          		</div>
+	          	</div>
+
+	          	<div class="form-group">        
+      				<div class="col-sm-offset-2 col-sm-10">
+        				<input type="submit" value="submit">
+      				</div>
+    			</div>
+
+	        	
    			</form>
 		</div>
+
+	</div>
 </body>
 </html>

@@ -17,7 +17,7 @@ class Input
         }   return false;
     }
 
-    public static function noInput ($key)
+    public static function noInput($key)
     {
         if (isset($_REQUEST[$key]) && $_REQUEST[$key] != '') {
             return true;
