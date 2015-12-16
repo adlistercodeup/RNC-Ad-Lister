@@ -3,19 +3,26 @@
 // copied this from my Log file will work more on this later.
 
 require_once 'Logger.php';
+require_once 'Input.php';
+require_once '../models/User.php';
 
 class Auth {
 
-	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
-
+	
 	public static function attempt($username, $password) {
-		if (($username == 'guest') && (password_verify($password, self::$password)) {
+
+
+		$log = new Log();
+
+		if (($username == User::findUser($dbc, $username) ) && (password_verify($password, $hash)) {
 				$_SESSION['LOGGED_IN_USER'] = true;
 				$_SESSION['username'] = $username;
 
 				$log->info("{$username} logged in successfully")
 				return true;
 		}
+
+	}
 
 	
 

@@ -7,7 +7,11 @@ session_start();
 // $sessionId = session_id();
 
 $username = Input::get('username');
-$password = Input::get('password');
+$pass = Input::get('pwd');
+
+$password=password_hash('$pass');
+
+
 $message = '';
 
 Auth::attempt($username, $password);
@@ -19,47 +23,61 @@ if (Auth::check()) {
 
 Auth::user();
 
-?>ø
+?>
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang='en'>
 <head>
+
+    <?php require_once('../views/partials/head.php'); ?>
     <title>Login form for Adlister</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
 </head>
 
 
 <body>
 
-<div class="container">
-  <h2>Sign in</h2>
-  <form role="form">
+  <div class="container">
 
-    <div class="form-group" method="POST" action = "users.show.php">
-      <label for="username">Username:</label>
-      <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?= $username ?>">
-    </div>
+  <?php require_once('../views/partials/header.php') ?> 
+  <?php require_once('../views/partials/navbar.php') ?>
 
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
-    </div>
+    <h2>Sign in</h2>
+    <form role="form" method="post" action="users.show.php">
 
-    <div class="checkbox">
-      <label><input type="checkbox"> Remember me</label>
-    </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" placeholder="Username" name="username" required autofocus value="<?= $username ?>">
+      </div>
 
-    <button type="submit" class="btn btn-default">Submit</button>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" required placeholder="Enter password" name="pwd">
+      </div>
 
-  </form>
-</div>
+      <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+      </div>
+
+      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+
+
+            <div class="form-group">        
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input type="submit" value="Logout">
+                </div>
+            </div>
+
+    </form>
+
+  <?php require_once('../views/partials/footer.php') ?>
+  </div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>
