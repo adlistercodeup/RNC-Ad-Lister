@@ -12,10 +12,6 @@ including requires for classes -->
 
 		<?php include '../views/partials/navbar.php'; ?>
 
-		<div id="sell-stuff">
-			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
-		</div>
-
 
 		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
@@ -29,26 +25,26 @@ including requires for classes -->
 		    <div class="carousel-inner" role="listbox">
 
 		      	<div class="item active">
-		        	<img src="img/mother.jpg" alt="Chania" width="460" height="550">
+		        	<img src="img/home_page/mother.jpg" width="460" height="550">
 				        <div class="carousel-caption">
-					        <h3>Veronica</h3>
-					        <p>We sold our gently used baby stuff for top dollar in no time!</p>
+					        <h3 class="testimonial">Surprise Baby #3! We found everything we needed to get ready at a fraction of the cost.</h3>
+					        <h3 class="testimonial"><em>- Rebecca</em></h3>
 			        	</div>
 		    	</div>
 
 		      	<div class="item">
-		        	<img src="img/children-happy.png" alt="Chania" width="460" height="550">
+		        	<img src="img/home_page/mother-and-baby.jpg" width="460" height="550">
 			        	<div class="carousel-caption">
-					        <h3>Chania</h3>
-					        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+					        <h3 class="testimonial">We sold our gently used baby stuff for top dollar in no time!</h3>
+					        <h3 class="testimonial"><em>- Alisa</em></h3>
 			        	</div>
 		      	</div>
 			    
 		      	<div class="item">
-		        	<img src="img/children-happy.png" alt="Flower" width="460" height="550">
+		        	<img src="img/home_page/toddler_twins.jpg" width="460" height="550">
 			        	<div class="carousel-caption">
-				          <h3>Flowers</h3>
-				          <p>Beatiful flowers in Kolymbari, Crete.</p>
+				          <h3 class="testimonial">"As fast as these two are growing there is NO WAY we could afford 2X's everything without Finders Keepers."</h3>
+				          <h3 class="testimonial"><em>- Regina</em></h3>
 				        </div>
 		      	</div>
 
@@ -63,14 +59,22 @@ including requires for classes -->
 			      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			      <span class="sr-only">Next</span>
 			    </a>
+	</div>
+
+		<div id="sell-stuff">
+			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
+		</div>
+
+		<div id="kid-lineup">
+			 <img class="img-responsive" src="img/home_page/children-happy.png">
+		</div>
 		  
 		</div>	
 
-	<div id=footer>
+	<div id="footer">
 		<?php include '../views/partials/footer.php'; ?>
 	</div>
 
-	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

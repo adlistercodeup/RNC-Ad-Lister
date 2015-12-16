@@ -2,7 +2,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Finders Keepers!</a>
+      <a class="navbar-brand" href="http://adlister.dev/">Finders Keepers!</a>
     </div>
 
     <div>
