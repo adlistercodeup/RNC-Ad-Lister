@@ -1,8 +1,12 @@
 <?php
+require_once '../database/adlist_db_config.php';
+require_once '../database/adlist_db_connect.php';
+require_once '../utils/Input.php';
+
 
 function insertListing($dbc, $listing_date, $item_name, $price, $image, $description) {
 	
-	$insert = "INSERT INTO adlister_table(listing_date, item_name, price, image, description) 
+	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description) 
 		VALUES (:listing_date, :item_name, :price, :image, :description)";
 	$stmt = $dbc->prepare($insert);
 	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
@@ -18,7 +22,7 @@ function pageController($dbc) {
 
 	// this block checks to see if an error is going to be thrown
 	try {
-		$listing_date = formatDate();
+		$listing_date = new DateTime();
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	}
@@ -42,31 +46,41 @@ function pageController($dbc) {
 		$description = Input::getString('description');
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
-	}
-}
+	} 
+	
 
-if(!empty($_POST)){
-	// add inputed data into datebase
-	if (Input::notEmpty('listing_date') 
-		&& Input::notEmpty('item_name') 
-		&& Input::notEmpty('price') 
-		&& Input::notEmpty('image') 
-		&& Input::notEmpty('description') ){
-			
-	// if no errors were thrown runs insert park
-		if(empty($errors)) {
-			insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
-			$errors = array();
+
+
+
+	if(!empty($_POST)){
+		// add inputed data into datebase
+		if (Input::notEmpty('listing_date') 
+			&& Input::notEmpty('item_name') 
+			&& Input::notEmpty('price') 
+			&& Input::notEmpty('image') 
+			&& Input::notEmpty('description') ){
+				
+		// if no errors were thrown runs insert park
+			if(empty($errors)) {
+				insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
+				$errors = array();
+			}
+
+		} elseif (Input::notEmpty('deleted_item_name')) {
+			$deleteListing($dbc);
+		} else {
+			echo "Please make a valid entry.";
 		}
-
-	} elseif (Input::notEmpty('deleted_item_name')) {
-		$deleteListing($dbc);
-	} else {
-		echo "Please make a valid entry.";
 	}
+	
 }
 
-extract (pageController($dbc));
+
+
+
+
+
+pageController($dbc);
 
 ?>
 <!doctype html>
