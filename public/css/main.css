@@ -1,49 +1,81 @@
-/* This file holds the css for the adlister project */
-
 
 body {
 	background-color: #FAEBD7;
 }
+/*.navbar-inverse {
+	color: #1EAED0;
+}*/
 
-.img {
-	height: 450px;
-	width: 450px;
+.navbar-inverse .navbar-link {
+  color: #1EAED0;
+}
+.navbar-brand {
+	font-size: 32px;
+	color: #1EAED0;
+}
+.dropdown-toggle {
+	font-size: 20px;
+	color: #1EAED0;
+}
+.nav {
+	font-size: 16px;
+	color: #1EAED0;
 }
 
-#nav-background {
-	background-image: url(/img/children-happy.png)
+.navbar-nav 
+.navbar-inverse {
+	color: #1EAED0;
+}
+.container-fluid {
+	background-color: #675038;
+
+}
+#kid-lineup {
+	position: relative;
+	display: inline-block;
+	background-size: contain;
+	width: 100%;
+	align-self: center;
+}
+.testimonial {
+	color: #675038;
 }
 
 #footer {
-	position: absolute;
-    bottom: 0px;
     text-align: center;
 }
 
-#logo {
-	font-size: 48px;
-}
-
 .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
+.carousel-inner > .item > a > img {
+      width: 50%;
+      height: 100%;
       margin: auto;
   }
 
-#member-submit {
-	position: relative;
-	left: 600px;
-	top: -30px;
-}
-
 #sell-stuff {
 	position: relative;
-	left: ;
-	top:;
+	padding: 50px;
+	margin: auto;
+	color: #675038;
+	height: 50px;
+	font-size: 36px;
+	: center;
+	font-weight: bold;
+	/*background-color: #1EAED0;*/
+/*	border: #675038 solid 5px;*/
 }
 
-#create-member {
+.btn-default {
+
 	position: relative;
-	left: 450px;
-	top:top -30px;
+	padding-top: 50px;
+	margin: auto;
+	color: #675038;
+	height: 50px;
+	font-size: 36px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #1EAED0;
+	border: #675038 solid 5px;
+
 }
