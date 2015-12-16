@@ -12,6 +12,7 @@
 
 	<h1>Become a Member</h1>
 
+<!-- add first and last names and zip code -->
 	<div class= "form_users">
 		<form>
 			<input type="text" id="username" name="username" placeholder="Username">
