@@ -1,6 +1,6 @@
 <?php
-require_once "../../lib/Auth.php";
-require_once "../../lib/Input.php";
+require_once "../utils/Auth.php";
+require_once "../utils/Input.php";
 
 session_start();
 
@@ -13,26 +13,55 @@ $message = '';
 Auth::attempt($username, $password);
 
 if (Auth::check()) {
-	header("Location: authorized.php");
+	header("Location: users.show.php");
 	die();
 }
 
 Auth::user();
 
-?>
+?>ø
+
+
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
-    <title>Login Exercise</title>
+    <title>Login form for Adlister</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
+
+
 <body>
-    <form method="POST" action = "auth.login.php">
-        <label>Username</label>
-        <input value="<?= $username ?>" type="text" name="username"><br>
-        <label>Password</label>
-        <input type="password" name="password"><br>
-        <button type="submit">Submit</button>
-    </form>
-    <h2><?= $message ?></h2>
+
+<div class="container">
+  <h2>Sign in</h2>
+  <form role="form">
+
+    <div class="form-group" method="POST" action = "users.show.php">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?= $username ?>">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+    </div>
+
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+
+  </form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 </html>
+
+
