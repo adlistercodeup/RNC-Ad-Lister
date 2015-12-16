@@ -2,9 +2,7 @@
 
 // copied this from my Log file will work more on this later.
 
-require_once 
-
-// '/php_exercises/Log.php';
+require_once 'Logger.php';
 
 class Auth {
 
