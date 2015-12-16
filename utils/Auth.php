@@ -12,6 +12,8 @@ class Auth {
 		if (($username == 'guest') && (password_verify($password, self::$password)) {
 				$_SESSION['LOGGED_IN_USER'] = true;
 				$_SESSION['username'] = $username;
+
+				$log->info("{$username} logged in successfully")
 				return true;
 		}
 
