@@ -9,6 +9,16 @@ body {
 	background-image: url(/img/children-happy.png)
 }
 
-.logo {
+#member-submit {
+
+}
+
+#logo {
 	font-size: 48px;
 }
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
