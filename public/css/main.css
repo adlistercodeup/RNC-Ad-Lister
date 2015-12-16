@@ -5,12 +5,19 @@ body {
 	background-color: #FAEBD7;
 }
 
+.img {
+	height: 450px;
+	width: 450px;
+}
+
 #nav-background {
 	background-image: url(/img/children-happy.png)
 }
 
-#member-submit {
-
+#footer {
+	position: absolute;
+    bottom: 0px;
+    text-align: center;
 }
 
 #logo {
@@ -22,3 +29,21 @@ body {
       width: 70%;
       margin: auto;
   }
+
+#member-submit {
+	position: relative;
+	left: 600px;
+	top: -30px;
+}
+
+#sell-stuff {
+	position: relative;
+	left: ;
+	top:;
+}
+
+#create-member {
+	position: relative;
+	left: 450px;
+	top:top -30px;
+}
