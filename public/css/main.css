@@ -2,13 +2,7 @@
 body {
 	background-color: #FAEBD7;
 }
-/*.navbar-inverse {
-	color: #1EAED0;
-}*/
 
-.navbar-inverse .navbar-link {
-  color: #1EAED0;
-}
 .navbar-brand {
 	font-size: 32px;
 	color: #1EAED0;
@@ -22,6 +16,10 @@ body {
 	color: #1EAED0;
 }
 
+.form-control {
+	width: 30%;
+}
+
 .navbar-nav 
 .navbar-inverse {
 	color: #1EAED0;
@@ -31,11 +29,12 @@ body {
 
 }
 #kid-lineup {
-	position: relative;
-	display: inline-block;
+
+	display: inline;
 	background-size: contain;
 	width: 100%;
 	align-self: center;
+	
 }
 .testimonial {
 	color: #675038;
@@ -54,7 +53,7 @@ body {
 
 #sell-stuff {
 	position: relative;
-	padding: 50px;
+	padding: 100px;
 	margin: auto;
 	color: #675038;
 	height: 50px;
@@ -63,6 +62,10 @@ body {
 	font-weight: bold;
 	/*background-color: #1EAED0;*/
 /*	border: #675038 solid 5px;*/
+}
+
+.footer-img {
+	display: imline;
 }
 
 .btn-default {

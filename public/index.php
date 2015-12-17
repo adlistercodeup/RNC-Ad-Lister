@@ -71,9 +71,9 @@ including requires for classes -->
 			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
 		</div>
 
-		<div id="kid-lineup">
+		<!-- <div id="kid-lineup">
 			 <img class="img-responsive" src="img/home_page/children-happy.png">
-		</div>
+		</div> -->
 		  
 		</div>	
 
