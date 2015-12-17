@@ -43,7 +43,7 @@ $results = selectListing($dbc);
 		<?php foreach ($results as $key => $result) { ?>
 			<div>
 
-				<h3><a href=""> <span> <?= $result['listing_date']; ?> </span> <span> <?= $result['item_name']; ?> </span <span>$ <?=$result['price']; ?></span></a> </h3><hr>
+				<h3><a href="ads.show.php?id=<?= $result['user_id'] ?>"> <span> <?= $result['listing_date']; ?> </span> <span> <?= $result['item_name']; ?> </span <span>$ <?=$result['price']; ?></span></a> </h3><hr>
 
 			</div>
 

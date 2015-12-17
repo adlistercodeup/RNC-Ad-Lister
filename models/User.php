@@ -1,9 +1,6 @@
 <?php
 
 
-require_once '../database/adlist_db_config.php';
-require_once '../database/adlist_db_connect.php';
-
 require_once 'BaseModel.php';
 
 
@@ -21,7 +18,7 @@ class User extends Model {
         $findQuery = "SELECT * FROM  user_account  WHERE user_name= :user_name";
         $stmt = $dbc->prepare($findQuery);
 
-        $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR)
+        $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
 
 
 		$stmt->execute();
