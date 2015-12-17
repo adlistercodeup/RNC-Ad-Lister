@@ -14,16 +14,17 @@ class Auth {
 
 		$log = new Log();
 		$newUser = User::findUser($username);
+
+	
 		
 
-		if (($username ==  ) && (password_verify($password, $hashedpassword)) {
+		if (($username == $newUser->username) && (password_verify($password, $hashedpassword))) {
 				$_SESSION['LOGGED_IN_USER'] = true;
 				$_SESSION['username'] = $username;
 
-				$log->info("{$username} logged in successfully")
-				return true;
+				$log->info("{$username} logged in successfully");
 		}
-
+				return true;
 	}
 
 	
@@ -36,13 +37,15 @@ class Auth {
 		}
 
 	public static function user() {
-		return ($_SESSION['username']);
+		if ($_SESSION['LOGGED_IN_USER'){
+			$_SESSION['LOGGED_IN_USER'] = $username;
 
+		}
+		return $username;	
 	}
 
 	public static function logout(){
-		if (isset($_SESSION['LOGGED_IN_USER']))
-		{
+		if (isset($_SESSION['LOGGED_IN_USER'])) {
 			unset($_SESSION['LOGGED_IN_USER']);
 		}
 	}

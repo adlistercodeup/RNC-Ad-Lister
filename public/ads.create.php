@@ -1,20 +1,40 @@
 <?php
 require_once '../database/adlist_db_config.php';
 require_once '../database/adlist_db_connect.php';
-require_once '../utils/Input.php';
+// require_once '../utils/Input.php';
+require_once '../utils/Auth.php';
+
+
+if (Auth::check()) {
+	if (Auth::user()){
+
+
+		$username = Input::get('username');
+
+
+
+
+
+	}
+
+
+
+
+}
+
 
 
 function insertListing($dbc, $listing_date, $item_name, $price, $image, $description) {
 	
-	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, user_id) 
-		VALUES (:listing_date, :item_name, :price, :image, :description, :user_id)";
+	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
+		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
 	$stmt = $dbc->prepare($insert);
 	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
-	$stmt->bindValue(':price', $price, PDO::PARAM_STR);
+	$stmt->bindValue(':price', $price, PDO::PARAM_INT);
 	$stmt->bindValue(':image', $image , PDO::PARAM_STR);
-	$stmt->bindValue(':description', $description, PDO::PARAM_INT);
-	$stmt->bindValue(':category', $category, PDO::PARAM_INT);
+	$stmt->bindValue(':description', $description, PDO::PARAM_STR);
+	$stmt->bindValue(':status', $status, PDO::PARAM_STR);
 
 	$stmt->bindValue(':user_id', ??? , PDO::PARAM_INT)
 	$stmt->execute();
@@ -52,7 +72,7 @@ function pageController($dbc) {
 	} 
 
 	try {
-		$category = Input::getString('category');
+		$category = Input::getString('status');
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	} 
@@ -67,17 +87,23 @@ function pageController($dbc) {
 			&& Input::notEmpty('item_name') 
 			&& Input::notEmpty('price') 
 			&& Input::notEmpty('image') 
-			&& Input::notEmpty('description') && Input::notEmpty('category') ){
-				
+			&& Input::notEmpty('description')){
+
+			if (Input::get('status') === 'active') {
+
 		// if no errors were thrown runs insert park
 				if(empty($errors)) {
 					insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
-				} elseif (Input::notEmpty('deleted_item_name')) {
-					$deleteListing($dbc);
 				} 
+				// elseif (Input::notEmpty('deleted_item_name')) {
+				// 	$deleteListing($dbc);
+				// } 
 				// else {
 				// 	echo "Please make a valid entry.";
 				// }
+				
+			}
+				
 		}
 
 	}
@@ -112,7 +138,7 @@ pageController($dbc);
 
 		<div>
 
-			<h2>Signed in as </h2>
+			<h2>Signed in as <?= {$username}; ?> !</h2>
 
 		</div>
 
@@ -158,9 +184,14 @@ pageController($dbc);
 	          	</div>
 
 	          	<div class="form-group">
-	          		<label for="category" class="control-label col-sm-2">Category:</label>
+	          		<label for="status" class="control-label col-sm-2">Status:</label>
 	          		<div class="col-sm-10">
-	          			<textarea id="category" name="category" placeholder="Category" row="5" class="form-control"></textarea>
+	          			<input list="status" id="status" name="status" placeholder="status" class="form-control">
+	          			<datalist id="status">
+	          				<option value="active">
+	          				<option value="inactive">
+	          				<option value="free">
+	          			</datalist>
 	          		</div>
 	          	</div>
 

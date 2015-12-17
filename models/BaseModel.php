@@ -1,8 +1,5 @@
 <?php
 
-require_once '../database/adlist_db_config.php';
-require_once '../database/adlist_db_connect.php';
-
 
 class Model {
 	// Array to store our key/value 
@@ -24,8 +21,12 @@ class Model {
         //if the database is not connected, then connect
         if (!isset(static::$dbc)) 
         {
-        	// require "db_connect.php";
+
+            require_once '../database/adlist_db_config.php';
+            require_once '../database/adlist_db_connect.php';
+
         	static::$dbc = $dbc;
+
         }
     }
     //Get a value from attributes based on name (name == 'key' or 'index') using magic getter

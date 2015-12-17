@@ -33,7 +33,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="users.create.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="users.show.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="auth.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
 
     </div>
