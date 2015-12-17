@@ -5,10 +5,11 @@
 require_once 'adlist_db_config.php';
 require_once 'adlist_db_connect.php';
 
-// SET FOREIGN_KEY_CHECKS = 0;
-// $dbc->exec('TRUNCATE TABLE ads');
-// $dbc->exec('TRUNCATE TABLE user_account');
-// SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 0;
+
+$dbc->exec('TRUNCATE TABLE ads');
+$dbc->exec('TRUNCATE TABLE user_account');
+SET FOREIGN_KEY_CHECKS = 1;
 
 $userLists = [
 	['first_name' => 'Crystal', 'last_name' => 'Nah', 'user_name' => 'crystal_nah', 'password' => 'djh', 'email' => 'crystal@ad.com', 'zipcode' => '12345'],
@@ -38,11 +39,11 @@ foreach ($userLists as $userList) {
 }
 
 $adLists = [
-	['user_id' => '1', 'listing_date' => '05282014', 'item_name' => 'bags', 'price' => '20', 'image' => '1.png', 'description' => 'good'],
-	['user_id' => '2', 'listing_date' => '05282014', 'item_name' => 'shoes', 'price' => '10', 'image' => '2.png', 'description' => 'good'],
-	['user_id' => '3', 'listing_date' => '05292015', 'item_name' => 'clothes', 'price' => '10', 'image' => '3.png', 'description' => 'good'],
-	['user_id' => '3', 'listing_date' => '05292015', 'item_name' => 'bags', 'price' => '10', 'image' => '4.png', 'description' => 'good'],
-	['user_id' => '3', 'listing_date' => '05292015', 'item_name' => 'shoes', 'price' => '10', 'image' => '5.png', 'description' => 'good']
+	['user_id' => 1, 'listing_date' => '05282014', 'item_name' => 'bags', 'price' => '20', 'image' => '1.png', 'description' => 'good'],
+	['user_id' => 2, 'listing_date' => '05282014', 'item_name' => 'shoes', 'price' => '10', 'image' => '2.png', 'description' => 'good'],
+	['user_id' => 3, 'listing_date' => '05292015', 'item_name' => 'clothes', 'price' => '10', 'image' => '3.png', 'description' => 'good'],
+	['user_id' => 3, 'listing_date' => '05292015', 'item_name' => 'bags', 'price' => '10', 'image' => '4.png', 'description' => 'good'],
+	['user_id' => 3, 'listing_date' => '05292015', 'item_name' => 'shoes', 'price' => '10', 'image' => '5.png', 'description' => 'good']
 ];
 
 $stmt = $dbc->prepare('INSERT INTO ads (user_id, listing_date, item_name, price, image, description)

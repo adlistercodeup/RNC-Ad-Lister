@@ -6,7 +6,7 @@ require_once '../utils/Input.php';
 
 function selectListing($dbc) {
 	
-	$activeListing = "SELECT * FROM ads WHERE category = 'active' LIMIT 25";
+	$activeListing = "SELECT * FROM ads WHERE status = 'active' LIMIT 25";
 
 	$stmt = $dbc->prepare($activeListing);
 	$stmt->execute();
