@@ -7,6 +7,9 @@ body {
 	font-size: 32px;
 	color: #1EAED0;
 }
+.dropdown {
+	color: #675038;
+}
 .dropdown-toggle {
 	font-size: 20px;
 	color: #1EAED0;
@@ -16,31 +19,47 @@ body {
 	color: #1EAED0;
 }
 
+/* navbar search*/
+#search {
+	font-family: helvetica;
+	top: 20px;
+}
+
+.submit-button {
+	color: #675038;
+	font-size: 16px;
+	background-color: #1EAED0;
+	border: #1EAED0;
+	height: 35px;
+
+}
+
+.search-block {
+	background-color: #FAEBD7;
+	border: #1EAED0;
+	height: 30px;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+/**/
+
 .form-control {
 	width: 30%;
 }
 
-.navbar-nav 
-.navbar-inverse {
-	color: #1EAED0;
-}
 .container-fluid {
 	background-color: #675038;
-
 }
 #kid-lineup {
-
 	display: inline;
-	background-size: contain;
-	width: 100%;
-	align-self: center;
-	
+	width: 110%;
 }
-.testimonial {
-	color: #675038;
+.footer-img {
+	display: inline;
 }
-
 #footer {
+	padding-top: 50px;
     text-align: center;
 }
 
@@ -50,31 +69,29 @@ body {
       height: 100%;
       margin: auto;
   }
+.testimonial {
+	color: #675038;
+}
 
 #sell-stuff {
 	position: relative;
-	padding: 100px;
+	padding: 50px;
 	margin: auto;
 	color: #675038;
 	height: 50px;
 	font-size: 36px;
-	: center;
 	font-weight: bold;
-	/*background-color: #1EAED0;*/
-/*	border: #675038 solid 5px;*/
+	text-align: center;
+
 }
 
-.footer-img {
-	display: imline;
-}
 
 .btn-default {
 
 	position: relative;
-	padding-top: 50px;
 	margin: auto;
 	color: #675038;
-	height: 50px;
+	height: 75px;
 	font-size: 36px;
 	text-align: center;
 	font-weight: bold;

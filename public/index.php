@@ -12,13 +12,6 @@ including requires for classes -->
 
 		<?php include '../views/partials/navbar.php'; ?>
 
-		<form action="index.php">
-			Search:
-			<input type="search" name="googlesearch">
-  			<input type="submit">
-		</form>
-
-
 		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
 		    <ol class="carousel-indicators">
@@ -71,11 +64,7 @@ including requires for classes -->
 			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
 		</div>
 
-		<!-- <div id="kid-lineup">
-			 <img class="img-responsive" src="img/home_page/children-happy.png">
-		</div> -->
 		  
-		</div>	
 
 	<div id="footer">
 		<?php include '../views/partials/footer.php'; ?>
