@@ -8,23 +8,31 @@ require_once '../models/User.php';
 
 class Auth {
 
+	protected static $username;
+	protected static $password;
+
+	private static function setStatic($username){
+		$user = User::findUser($username);
+		var_dump($user);
+
+		self::$username = $user->attributes['username'];
+		self::$password = $user->attributes['password'];
+	}
+
 	
 	public static function attempt($username, $password) {
 
 
 		$log = new Log();
-		$newUser = User::findUser($username);
-
-	
 		
+		self::setStatic($username);
 
-		if (($username == $newUser->username) && (password_verify($password, $hashedpassword))) {
-				$_SESSION['LOGGED_IN_USER'] = true;
-				$_SESSION['username'] = $username;
-
-				$log->info("{$username} logged in successfully");
+		if (($username == self::username) && (password_verify($password, self::$password))) {
+			$_SESSION['LOGGED_IN_USER'] = $username;
+			return true;
+		} else {
+			return false;
 		}
-				return true;
 	}
 
 	
@@ -35,9 +43,11 @@ class Auth {
 		} else {
 			return false;
 		}
+	}
 
 	public static function user() {
-		if ($_SESSION['LOGGED_IN_USER'){
+		if ($_SESSION['LOGGED_IN_USER']){
+
 			$_SESSION['LOGGED_IN_USER'] = $username;
 
 		}
@@ -49,6 +59,8 @@ class Auth {
 			unset($_SESSION['LOGGED_IN_USER']);
 		}
 	}
+
+}
 
 
 	
