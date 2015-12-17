@@ -8,15 +8,15 @@ function selectListing($dbc) {
 	
 	$activeListing = "SELECT * FROM ads WHERE status = 'active' LIMIT 25";
 
-	$stmt = $dbc->prepare($activeListing);
-	$stmt->execute();
-		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$stmt = $dbc->query($activeListing);
 
-		return $results;
+	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $results;
 
 }
 
-selectListing($dbc);
+$results = selectListing($dbc);
 
 ?>
 
@@ -43,7 +43,7 @@ selectListing($dbc);
 		<?php foreach ($results as $key => $result) { ?>
 			<div>
 
-				<h3> <span>$results['listing_date']</span <span>$results['item_name']</span <span>$results['price']</span </h3><hr>
+				<h3><a href=""> <span> <?= $result['listing_date']; ?> </span> <span> <?= $result['item_name']; ?> </span <span>$ <?=$result['price']; ?></span></a> </h3><hr>
 
 			</div>
 
