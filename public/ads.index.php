@@ -1,22 +1,55 @@
+<?php
+require_once '../database/adlist_db_config.php';
+require_once '../database/adlist_db_connect.php';
+require_once '../utils/Input.php';
 
 
-$limit = 4;
+function selectListing($dbc) {
+	
+	$activeListing = "SELECT * FROM ads WHERE status = 'active' LIMIT 25";
 
-$pageLimiter = getPagination($dbc, $limit);
+	$stmt = $dbc->prepare($activeListing);
+	$stmt->execute();
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// prevents users from breaking page
-$page = sanitizePages($pageLimiter);
+		return $results;
 
-// set pagination for page
-$offseter = ($page * $limit) - $limit; 
+}
 
-$results = getResults ($dbc, $limit, $offseter);
+selectListing($dbc);
 
-return array(
-	'results' => $results,
-	'page' => $page,
-	'pageLimiter' => $pageLimiter,
-	'errors' => $errors
-	);
+?>
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+	
+	<?php require_once('../views/partials/head.php'); ?>
+	<title>Creating Ad</title>
+</head>
+<body>
+
+	<div class="container">
 
 
+
+
+		<div>
+			<h2>Active listing!!!</h2>
+		</div>
+
+		<?php foreach ($results as $key => $result) { ?>
+			<div>
+
+				<h3> <span>$results['listing_date']</span <span>$results['item_name']</span <span>$results['price']</span </h3><hr>
+
+			</div>
+
+			<?php } ?>
+
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<table>
+			<tr>
+				<th>Listing Date</th>
+				<th>Item Name</th>
+				<th>$</th>
+				<th>Image</th>
+				<th>Description</th>
+			</tr>
+
+
+			<?php foreach($listings as $listing): ?> 
+				<tr>	
+					<th><?= $listing['item_name'] ?>
+						<form method="POST">
+							<button name="deleted_item_name" type="submit" value="<?=$listing['item_name']?>"></button>
+						</form>
+					</th>
+					<th><?= $listing['item_name'] ?></th>
+					<th><?= $listing['price'] ?></th>
+					<th><?= $listing['image'] ?></th>
+					<th><?= $listing['description'] ?></th>
+				</tr>
+			<?php endforeach ?>
+
+			
+		</table>

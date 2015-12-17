@@ -12,6 +12,12 @@ including requires for classes -->
 
 		<?php include '../views/partials/navbar.php'; ?>
 
+		<form action="index.php">
+			Search:
+			<input type="search" name="googlesearch">
+  			<input type="submit">
+		</form>
+
 
 		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->

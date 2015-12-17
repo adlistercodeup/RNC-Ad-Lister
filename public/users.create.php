@@ -10,33 +10,34 @@ function insertData($dbc) {
 
 	$errors =[];
 
+
 	if (!empty($_POST)) {
 
 		try {
-			$username = Input::getString('username');
+			$userName = Input::getString('username');
 		} catch (Exception $e) {
 
 			$errors[] = $e->getMessage();		
 		}
 
 		try {
-			$password = Input::getString('password');
+			$password = Input::getString('pwd');
 
-			$password = password_hash('$password');
+			$password = password_hash($password, PASSWORD_DEFAULT);
 		} catch (Exception $e) {
 
 			$errors[] = $e->getMessage();		
 		}
 
 		try {
-			$firstname = Input::getString('firstname');
+			$firstName = Input::getString('firstname');
 		} catch (Exception $e) {
 
 			$errors[] = $e->getMessage();		
 		}
 
 		try {
-			$lastname = Input::getString('lastname');
+			$lastName = Input::getString('lastname');
 		} catch (Exception $e) {
 
 			$errors[] = $e->getMessage();		
@@ -50,26 +51,29 @@ function insertData($dbc) {
 		}
 
 		try {
-			$zipcode = Input::Number('zipcode');
+			$zipCode = Input::getNumber('zipcode');
 		} catch (Exception $e) {
 
 			$errors[] = $e->getMessage();		
 		}
 
 
-		f (Input::notEmpty('name') && Input::notEmpty('location')) {
+		if (Input::notEmpty('username') && Input::notEmpty('pwd') && Input::notEmpty('firstname') && Input::notEmpty('lastname') && Input::notEmpty('email') && Input::notEmpty('zipcode')) {
 
-				$userData = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description)
-							VALUES (:name, :location, :date_established, :area_in_acres, :description)';
+				$userData = 'INSERT INTO user_account (first_name, last_name, user_name, password, email, zipcode)
+							VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
 
 
 				$userStmt = $dbc->prepare($userData);
 			
-				$userStmt->bindValue(':name', $name, PDO::PARAM_STR);
-				$userStmt->bindValue(':location', $location, PDO::PARAM_STR);
-				$userStmt->bindValue(':date_established', $date, PDO::PARAM_STR);
-				$userStmt->bindValue(':area_in_acres', $area, PDO::PARAM_STR);
-				$userStmt->bindValue(':description', $description, PDO::PARAM_STR);
+				$userStmt->bindValue(':first_name', $firstName, PDO::PARAM_STR);
+				$userStmt->bindValue(':last_name', $lastName, PDO::PARAM_STR);
+				$userStmt->bindValue(':user_name', $userName, PDO::PARAM_STR);
+				$userStmt->bindValue(':password', $password, PDO::PARAM_STR);
+				$userStmt->bindValue(':email', $email, PDO::PARAM_STR);
+				$userStmt->bindValue(':zipcode', $zipCode, PDO::PARAM_INT);
+
+
 
 				try {
 
@@ -78,24 +82,18 @@ function insertData($dbc) {
 				} catch (Exception $e) {
 
 
-				$errors[] = $e->getMessage();
+					$errors[] = $e->getMessage();
 			
-
-				throw new Exception('Error: {$e->getMessage()}');
-
 				}
-
-			}
-
-
-
-
+		}
 
 	}
 
-
+	return $errors;
 
 }
+
+insertData($dbc);
 
 
 
@@ -114,9 +112,9 @@ function insertData($dbc) {
 	<?php require_once('../views/partials/header.php') ?> 
 	<?php require_once('../views/partials/navbar.php') ?>
 
-	<h1>Welcome</h1>
+	<h1>Welcome!!!</h1>
 
-		<!-- add first and last names and zip code -->
+
 		<div class= "form_users">
 			<form role="form" method="post" action="users.create.php">
 
@@ -147,7 +145,7 @@ function insertData($dbc) {
 
 		    	<div class="form-group">
 			      <label for="zipcode">Zipcode:</label>
-			      <input title="Five digit zipcode" pattern="[0-9]{5}" type="number" class="form-control" id="email" placeholder="E-Mail" name="email">
+			      <input type="number" pattern="[0-9]{5}" title="Five digit zipcode" class="form-control" id="zipcode" placeholder="Zipcode" name="zipcode">
 		    	</div>
 
 				<div class="checkbox">
@@ -156,7 +154,7 @@ function insertData($dbc) {
 
 		    	<div class="form-group">        
 	              <div class="col-sm-offset-2 col-sm-10">
-	                <input type="submit" value="Logout">
+	                <input type="submit" value="Submit">
 	              </div>
 	          	</div>	
 			</form>

@@ -13,8 +13,10 @@ class Auth {
 
 
 		$log = new Log();
+		$newUser = User::findUser($username);
+		
 
-		if (($username == User::findUser($dbc, $username) ) && (password_verify($password, $hash)) {
+		if (($username ==  ) && (password_verify($password, $hashedpassword)) {
 				$_SESSION['LOGGED_IN_USER'] = true;
 				$_SESSION['username'] = $username;
 

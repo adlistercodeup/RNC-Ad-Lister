@@ -1,7 +1,6 @@
 <?php
 
-class Input
-{
+class Input {
 
     /**
      * Check if a given value was passed in the request
@@ -9,16 +8,13 @@ class Input
      * @param string $key index to look for in request
      * @return boolean whether value exists in $_POST or $_GET
      */
-    public static function has($key)
-    {
-        if (isset($_REQUEST[$key]))
-        {
+    public static function has($key) {
+        if (isset($_REQUEST[$key])) {
             return true;
         }   return false;
     }
 
-    public static function noInput($key)
-    {
+    public static function notEmpty($key) {
         if (isset($_REQUEST[$key]) && $_REQUEST[$key] != '') {
             return true;
         }
@@ -30,40 +26,40 @@ class Input
      * @param mixed $default default value to return if key not found
      * @return mixed value passed in request
      */
-    public static function get($key, $default = null)
-    {
+    public static function get($key, $default = null) {
         if (self::has($key)) {
-            return $_REQUEST[$key];
+            return self::escape($_REQUEST[$key]);
         } else {
-            return $default;
+            return null;
         }
     }
 
-    public static function escape($input)
-    {
+    public static function escape($input) {
         return htmlspecialchars(strip_tags($input));
     }
 
-    public static function getString($key)
-    {
-        if(!self::noInput($key) || !is_string(self::get($key)) || is_numeric(self::get($key))) {
-            throw new Exception ("$key must be a string!");
+    public static function getString($key) {
+
+        $value = trim(self::get($key));
+
+        if (!is_string($value)) {
+            throw new Exception (" must be a string!");
         }
-        return self::get($key);
+        return $value;
     }
 
-    public static function getNumber($key)
-    {
-        if(!self::noInput($key) || !is_numeric(self::get($key)))
-        {
-            throw new Exception ("$key must be a number!");
+    public static function getNumber($key) {
+
+        $value = trim(self::get($key));
+
+        if (!ctype_digit($value)) {
+            throw new Exception (" must be a number!");
         }
-            return self::get($key);
+            return $value;
     }
 
-    public static function getDate($key)
-    {
-        $date = self::get($key);
+    public static function getDate($key) {
+        $date = trim(self::get($key));
         $d = new DateTime($date);
         return $d;
     }

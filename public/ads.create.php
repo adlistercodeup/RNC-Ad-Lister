@@ -12,8 +12,9 @@ function insertListing($dbc, $listing_date, $item_name, $price, $image, $descrip
 	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
 	$stmt->bindValue(':price', $price, PDO::PARAM_STR);
-	$stmt->bindValue(':image', $description , PDO::PARAM_STR);
-	$stmt->bindValue(':description', $image, PDO::PARAM_INT);
+	$stmt->bindValue(':image', $image , PDO::PARAM_STR);
+	$stmt->bindValue(':description', $description, PDO::PARAM_INT);
+	$stmt->bindValue(':category', $category, PDO::PARAM_INT);
 
 	$stmt->bindValue(':user_id', ??? , PDO::PARAM_INT)
 	$stmt->execute();
@@ -49,6 +50,12 @@ function pageController($dbc) {
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	} 
+
+	try {
+		$category = Input::getString('category');
+	} catch (Exception $e) {
+		array_push($errors, $e->getMessage());
+	} 
 	
 
 
@@ -56,16 +63,16 @@ function pageController($dbc) {
 
 	if(!empty($_POST)){
 		// add inputed data into datebase
-		if (Input::noInput('listing_date') 
-			&& Input::noInput('item_name') 
-			&& Input::noInput('price') 
-			&& Input::noInput('image') 
-			&& Input::noInput('description') ){
+		if (Input::notEmpty('listing_date') 
+			&& Input::notEmpty('item_name') 
+			&& Input::notEmpty('price') 
+			&& Input::notEmpty('image') 
+			&& Input::notEmpty('description') && Input::notEmpty('category') ){
 				
 		// if no errors were thrown runs insert park
 				if(empty($errors)) {
 					insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
-				} elseif (Input::noInput('deleted_item_name')) {
+				} elseif (Input::notEmpty('deleted_item_name')) {
 					$deleteListing($dbc);
 				} 
 				// else {
@@ -147,6 +154,13 @@ pageController($dbc);
 	          		<label for="description" class="control-label col-sm-2">Description:</label>
 	          		<div class="col-sm-10">
 	          			<textarea id="description" name="description" placeholder="Description" row="5" class="form-control"></textarea>
+	          		</div>
+	          	</div>
+
+	          	<div class="form-group">
+	          		<label for="category" class="control-label col-sm-2">Category:</label>
+	          		<div class="col-sm-10">
+	          			<textarea id="category" name="category" placeholder="Category" row="5" class="form-control"></textarea>
 	          		</div>
 	          	</div>
 

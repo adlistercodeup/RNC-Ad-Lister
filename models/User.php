@@ -13,13 +13,17 @@ class User extends Model {
 
 
 
-	public static function findUser($dbc, $username)
+	public static function findUser($user_name)
     {
         // Get connection to the database - needed because find does not need an object instantiation and therefore
         	//does not go through the constructor
         self::dbConnect();
-        $findQuery = "SELECT * FROM  user_account  WHERE user_name= $username";
+        $findQuery = "SELECT * FROM  user_account  WHERE user_name= :user_name";
         $stmt = $dbc->prepare($findQuery);
+
+        $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR)
+
+
 		$stmt->execute();
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
         // The following code will set the attributes on the calling object based on the result variable's contents
