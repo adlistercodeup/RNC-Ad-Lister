@@ -16,7 +16,7 @@ $adTable = 'CREATE TABLE ads (
 	price VARCHAR(20),
 	image VARCHAR(50), 
 	description VARCHAR(250),
-	category VARCHAR(10),
+	status VARCHAR(10),
 	FOREIGN KEY (user_id)
 		REFERENCES user_account(id)
 		ON DELETE CASCADE
