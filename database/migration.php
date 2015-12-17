@@ -1,6 +1,6 @@
 <?php
 
-/* This file holds the creates the database and tables and holds the migration structure of the database */
+/* This file creates the table in the database holds the migration structure of the database */
 
 // Created the database (adlister_db) in MYSQL
 
@@ -36,6 +36,7 @@ $adTable = 'CREATE TABLE ads (
 	price VARCHAR(20),
 	image VARCHAR(50), 
 	description VARCHAR(250),
+	category VARCHAR(10),
 	FOREIGN KEY (user_id)
 		REFERENCES user_account(id)
 		ON DELETE CASCADE

@@ -10,7 +10,6 @@ function insertData($dbc) {
 
 	$errors =[];
 
-	var_dump($_POST);
 
 	if (!empty($_POST)) {
 
@@ -94,7 +93,7 @@ function insertData($dbc) {
 
 }
 
-var_dump(insertData($dbc));
+insertData($dbc);
 
 
 
@@ -146,7 +145,7 @@ var_dump(insertData($dbc));
 
 		    	<div class="form-group">
 			      <label for="zipcode">Zipcode:</label>
-			      <input title="Five digit zipcode" pattern="[0-9]{5}" type="number" class="form-control" id="zipcode" placeholder="Zipcode" name="zipcode">
+			      <input type="number" pattern="[0-9]{5}" title="Five digit zipcode" class="form-control" id="zipcode" placeholder="Zipcode" name="zipcode">
 		    	</div>
 
 				<div class="checkbox">

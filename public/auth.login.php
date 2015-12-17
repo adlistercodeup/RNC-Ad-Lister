@@ -7,9 +7,9 @@ session_start();
 // $sessionId = session_id();
 
 $username = Input::get('username');
-$pass = Input::get('pwd');
+$password = Input::get('pwd');
 
-$password=password_hash('$pass');
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
 $message = '';

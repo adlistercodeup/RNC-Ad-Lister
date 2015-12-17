@@ -22,16 +22,12 @@ foreach ($userLists as $userList) {
 
 				$stmt = $dbc->prepare($userData);
 			
-				$stmt->bindValue(':first_name', $firstName, PDO::PARAM_STR);
-				$stmt->bindValue(':last_name', $lastName, PDO::PARAM_STR);
-				$stmt->bindValue(':user_name', $userName, PDO::PARAM_STR);
-				$stmt->bindValue(':password', $password, PDO::PARAM_STR);
-				$stmt->bindValue(':email', $email, PDO::PARAM_STR);
-				$stmt->bindValue(':zipcode', $zipCode, PDO::PARAM_INT);
-
-
-	
-
+				$stmt->bindValue(':first_name', $userList['first_name'], PDO::PARAM_STR);
+				$stmt->bindValue(':last_name', $userList['last_name'], PDO::PARAM_STR);
+				$stmt->bindValue(':user_name', $userList['user_name'], PDO::PARAM_STR);
+				$stmt->bindValue(':password', $userList['password'], PDO::PARAM_STR);
+				$stmt->bindValue(':email', $userList['email'], PDO::PARAM_STR);
+				$stmt->bindValue(':zipcode', $userList['zipcode'], PDO::PARAM_INT);
 
 	$stmt->execute();
 
