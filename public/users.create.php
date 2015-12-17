@@ -160,8 +160,11 @@ insertData($dbc);
 			</form>
 		</div>
 
-	<?php require_once('../views/partials/footer.php') ?>
+	
 
+	</div>
+	<div id="footer">
+		<?php include '../views/partials/footer.php'; ?>
 	</div>
 
 
