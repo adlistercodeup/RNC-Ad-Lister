@@ -16,18 +16,20 @@ if (Auth::check()) {
 function insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active", $userId = 3) {
 	// var_dump($listing_date);
 
+	$userId = Auth::id();
 
 	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
 		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
 	$stmt = $dbc->prepare($insert);
-	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
+	var_dump($listing_date);
+	$stmt->bindValue(':listing_date', $listing_date->date, PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
 	$stmt->bindValue(':price', $price, PDO::PARAM_INT);
 	$stmt->bindValue(':image', $image , PDO::PARAM_STR);
 	$stmt->bindValue(':description', $description, PDO::PARAM_STR);
 	$stmt->bindValue(':status', $status, PDO::PARAM_STR);
 
-	$stmt->bindValue(':user_id', $user_id , PDO::PARAM_INT);
+	$stmt->bindValue(':user_id', $userId , PDO::PARAM_INT);
 	// ask Reni what is the key?
 	// $stmt->bindValue(':user_id', $_SESSION[''] , PDO::PARAM_INT);
 	$stmt->execute();
@@ -38,7 +40,7 @@ function pageController($dbc) {
 
 	// this block checks to see if an error is going to be thrown
 	try {
-		$listing_date = new DateTime();
+		$listing_date = Input::getDate('listing_date');
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	}

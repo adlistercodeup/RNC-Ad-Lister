@@ -14,6 +14,7 @@ class Auth {
 
 	protected static function setStatic($username){
 		$user = User::findUser($username);
+
 		var_dump($user);
 
 		self::$username = $user->attributes['username'];
@@ -30,14 +31,19 @@ class Auth {
 
 		if (($username == self::$username) && (password_verify($password, self::$password))) {
 			$_SESSION['LOGGED_IN_USER'] = $username;
+			$user = User::findUser($username);
+			$_SESSION['USER_ID'] = $user->id;
+
 			return true;
 		} else {
 			return false;
 		}
+	} 
+
+	public static function id()
+	{
+		return isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : null;
 	}
-
-	
-
 	public static function check() {
 		if (isset($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] != "") {
 			return true;
