@@ -1,9 +1,6 @@
 <?php
-require_once '../database/adlist_db_config.php';
-require_once '../database/adlist_db_connect.php';
-// require_once '../utils/Input.php';
-require_once '../utils/Auth.php';
 
+require_once '../bootstrap.php';
 // session_start();
 
 if (Auth::check()) {
@@ -38,7 +35,7 @@ function pageController($dbc) {
 
 	// this block checks to see if an error is going to be thrown
 	try {
-		$listing_date = new DateTime();
+		$listing_date = new DateTime(now);
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	}
