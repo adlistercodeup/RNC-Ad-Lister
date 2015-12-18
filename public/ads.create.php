@@ -1,7 +1,7 @@
 <?php
 
 require_once '../bootstrap.php';
-// session_start();
+session_start();
 
 if (Auth::check()) {
 	if (Auth::user()){
@@ -10,16 +10,16 @@ if (Auth::check()) {
 }
 
 
-function insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active", $userId = 3) {
-	// var_dump($listing_date);
+function insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active") {
+	
 
 	$userId = Auth::id();
 
 	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
 		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
 	$stmt = $dbc->prepare($insert);
-	var_dump($listing_date);
-	$stmt->bindValue(':listing_date', $listing_date->date, PDO::PARAM_STR);
+	// var_dump($listing_date);
+	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
 	$stmt->bindValue(':price', $price, PDO::PARAM_INT);
 	$stmt->bindValue(':image', $image , PDO::PARAM_STR);
@@ -38,6 +38,7 @@ function pageController($dbc) {
 	// this block checks to see if an error is going to be thrown
 	try {
 		$listing_date = Input::getDate('listing_date');
+		$listing_date = $listing_date->date;
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	}
@@ -74,7 +75,7 @@ function pageController($dbc) {
 
 		// if no errors were thrown runs insert park
 			if(empty($errors)) {
-				insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active", $userId = 3);
+				insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
 			} 
 			// elseif (Input::notEmpty('deleted_item_name')) {
 			// 	$deleteListing($dbc);
