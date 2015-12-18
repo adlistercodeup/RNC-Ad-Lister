@@ -4,6 +4,8 @@ require_once '../database/adlist_db_connect.php';
 // require_once '../utils/Input.php';
 require_once '../utils/Auth.php';
 
+// session_start();
+
 if (Auth::check()) {
 	if (Auth::user()){
 		$username = Input::get('username');
@@ -11,8 +13,10 @@ if (Auth::check()) {
 }
 
 
-function insertListing($dbc, $listing_date, $item_name, $price, $image, $description) {
-	var_dump($listing_date);
+function insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active", $userId = 3) {
+	// var_dump($listing_date);
+
+
 	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
 		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
 	$stmt = $dbc->prepare($insert);
@@ -23,7 +27,7 @@ function insertListing($dbc, $listing_date, $item_name, $price, $image, $descrip
 	$stmt->bindValue(':description', $description, PDO::PARAM_STR);
 	$stmt->bindValue(':status', $status, PDO::PARAM_STR);
 
-	$stmt->bindValue(':user_id', 3 , PDO::PARAM_INT);
+	$stmt->bindValue(':user_id', $user_id , PDO::PARAM_INT);
 	// ask Reni what is the key?
 	// $stmt->bindValue(':user_id', $_SESSION[''] , PDO::PARAM_INT);
 	$stmt->execute();
@@ -69,19 +73,17 @@ function pageController($dbc) {
 			&& Input::notEmpty('image') 
 			&& Input::notEmpty('description')){
 
-			if (Input::get('status') === 'active') {
-
 		// if no errors were thrown runs insert park
-				if(empty($errors)) {
-					insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
-				} 
-				// elseif (Input::notEmpty('deleted_item_name')) {
-				// 	$deleteListing($dbc);
-				// } 
-				// else {
-				// 	echo "Please make a valid entry.";
-				// }				
-			}		
+			if(empty($errors)) {
+				insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active", $userId = 3);
+			} 
+			// elseif (Input::notEmpty('deleted_item_name')) {
+			// 	$deleteListing($dbc);
+			// } 
+			// else {
+			// 	echo "Please make a valid entry.";
+			// }				
+			
 		}
 	}
 }

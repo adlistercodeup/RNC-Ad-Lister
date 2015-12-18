@@ -8,7 +8,7 @@ class User extends Model {
 
 	protected static $table = 'user_account';
 
-
+// finduserbyusername
 
 	public static function findUser($user_name) {
         // Get connection to the database - needed because find does not need an object instantiation and therefore
