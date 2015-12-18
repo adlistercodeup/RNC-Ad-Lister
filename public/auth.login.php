@@ -1,33 +1,29 @@
 <?php
 require_once "../utils/Auth.php";
 require_once "../utils/Input.php";
-require_once "../utils/Logger.php";
 
-session_start();
 
-if (!empty($_POST)){
+// $sessionId = session_id();
+
+$username = Input::get('username');
+$password = Input::get('pwd');
+
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+
+$message = '';
+
+Auth::attempt($username, $password);
+
+if (Auth::check()) {
+
+  session_start();
   
-
-  // $sessionId = session_id();
-
-  $username = Input::get('username');
-  $password = Input::get('pwd');
-
-  
-
-
-  $message = '';
-
-  Auth::attempt($username, $password);
-
-  if (Auth::check()) {
-  	header("Location: users.show.php");
-  	die();
-  }
-
-  Auth::user();
+	header("Location: users.show.php");
+	die();
 }
 
+Auth::user();
 
 ?>
 
@@ -56,7 +52,7 @@ if (!empty($_POST)){
 
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" class="form-control" id="username" placeholder="Username" name="username" required autofocus placeholder = "Username">
+        <input type="text" class="form-control" id="username" placeholder="Username" name="username" required autofocus value="<?= $username ?>">
       </div>
 
       <div class="form-group">

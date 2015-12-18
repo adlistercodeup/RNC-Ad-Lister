@@ -1,3 +1,4 @@
+
 <?php
 
 // make sure attributes is protected if accessed in the child class.

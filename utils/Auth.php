@@ -1,3 +1,4 @@
+
 <?php
 
 // copied this from my Log file will work more on this later.
@@ -63,4 +64,4 @@ class Auth {
 }
 
 
-	
+
