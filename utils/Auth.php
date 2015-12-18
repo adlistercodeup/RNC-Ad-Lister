@@ -47,12 +47,13 @@ class Auth {
 	}
 
 	public static function user() {
-		if ($_SESSION['LOGGED_IN_USER']){
+		if (isset($_SESSION['LOGGED_IN_USER'])) {
 
-			$_SESSION['LOGGED_IN_USER'] = $username;
-
+			return $_SESSION['LOGGED_IN_USER'];
+			
+		} else {
+			return null;
 		}
-		return $username;	
 	}
 
 	public static function logout(){
