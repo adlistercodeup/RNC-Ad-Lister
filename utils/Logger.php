@@ -10,42 +10,51 @@ class Log {
 
 	protected $handle;
 
-	public function __construct($prefix = 'log') {
+	// public function __construct($prefix = 'log') {
 
-		$today = date('o-m-d');
+	// 	$today = date('o-m-d');
 
-		$filename = "{$prefix}-{$today}.log";
+	// 	$fileName = "{$prefix}-{$today}.log";
 
-		$this->setFileName($filename);
+	// 	$this->setFileName($fileName);
 
-		$this->handle = fopen($this->fileName, 'a');
+	// 	$this->handle = fopen($this->fileName, 'a');
 
+	// }
+
+	// public function setFileName($fileName) {
+
+	// 	if (is_string($fileName)) {
+
+	// 		if (touch($fileName) && is_writable($fileName)) {
+
+	// 			$this->$fileName = $fileName;
+				
+	// 		}
+			
+	// 	}
+
+	// }
+
+	public function __construct()
+	{
+		$this->setFilename();
+		$this->setHandle();
 	}
 
-	public function setFileName($fileName) {
+	protected function setFilename($prefix = 'log'){
+		$this->fileName= "../utils/data/" . $prefix . date('Y-m-d'). ".log";
+	}
 
-		if (is_string($filename)) {
+	public function setHandle() {
 
-			if (touch($fileName) && is_writable($fileName)) {
-
-				$this->$fileName = $filename;
-				
-			}
-			
-		}
-
+		$this->handle = fopen($this->fileName, 'a');
 	}
 
 	public function getFileName() {
 
 		return $this->fileName;
 	}
-
-	public function setHandle($handle) {
-
-		$this->$handle = trim(fopen(getFileName($prefix = 'log'), 'a'));
-	}
-
 
 	public function getHandle() {
 
@@ -64,7 +73,7 @@ class Log {
 
 	    $data = "{$today} {$time} [{$logLevel}] {$message}";
 
-		fwrite($this->handle, $data . PHP_EOL );
+		fwrite($this->handle, $data . PHP_EOL);
 
 	}
 
@@ -81,10 +90,12 @@ class Log {
 
 
 
-}
+
 	public function __destruct() {
 
 	    fclose($this->handle);
 		
 	}
+
+}
 ?> 

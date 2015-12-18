@@ -1,5 +1,6 @@
 <?php
 
+// make sure attributes is protected if accessed in the child class.
 
 class Model {
 	// Array to store our key/value 
@@ -14,7 +15,7 @@ class Model {
         self::dbConnect();
     }
     //Connect to the DB
-    private static function dbConnect()
+    protected static function dbConnect()
     {
     	//self:: will ensure that all children use this database connection and private will ensure that children still can't 
     	//access this method through the public constructors which calls this method
