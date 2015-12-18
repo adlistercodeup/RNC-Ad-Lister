@@ -10,8 +10,7 @@ class User extends Model {
 
 
 
-	public static function findUser($user_name)
-    {
+	public static function findUser($user_name) {
         // Get connection to the database - needed because find does not need an object instantiation and therefore
         	//does not go through the constructor
         self::dbConnect();

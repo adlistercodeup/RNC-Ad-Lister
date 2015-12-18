@@ -2,7 +2,8 @@
 require_once "../utils/Auth.php";
 require_once "../utils/Input.php";
 
-$sessionId = session_id();
+session_start();
+
 if(!empty($_POST)){
 
 $username = Input::get('username');
@@ -16,14 +17,11 @@ $message = '';
 Auth::attempt($username, $password);
 
 if (Auth::check()) {
-
-
-  
 	header("Location: users.show.php");
 	die();
 }
 
-Auth::user();
+$username = Auth::user();
 }
 
 ?>
