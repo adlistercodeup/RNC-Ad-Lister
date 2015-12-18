@@ -5,7 +5,7 @@
 
 require_once 'Logger.php';
 require_once 'Input.php';
-require_once '../models/User.php';
+require '../models/User.php';
 
 class Auth {
 
@@ -39,7 +39,7 @@ class Auth {
 	
 
 	public static function check() {
-		if (isset($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] == true) {
+		if (isset($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] != "") {
 			return true;
 		} else {
 			return false;

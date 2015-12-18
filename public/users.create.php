@@ -5,6 +5,8 @@ require_once '../database/adlist_db_connect.php';
 
 require_once "../utils/Input.php";
 
+session_start();
+
 
 function insertData($dbc) {
 
@@ -94,6 +96,13 @@ function insertData($dbc) {
 }
 
 insertData($dbc);
+
+function changePage(){
+	header("Location: users.show.php");
+	die();
+}
+
+changePage();
 
 
 
