@@ -1,6 +1,7 @@
 <?php
 
 require_once '../bootstrap.php';
+
 session_start();
 
 if (Auth::check()) {
@@ -10,15 +11,22 @@ if (Auth::check()) {
 }
 
 
-function insertListing($dbc, $listing_date, $item_name, $price, $image, $description, $status = "active") {
+function insertListing($dbc, $item_name, $price, $image, $description, $status = "active") {
 	
 
 	$userId = Auth::id();
 
+
+	$d = Input::getDate('now');
+
+	$listing_date = $d->format('Y-m-d');
+
+	var_dump($listing_date);
+
+
 	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
 		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
 	$stmt = $dbc->prepare($insert);
-	// var_dump($listing_date);
 	$stmt->bindValue(':listing_date', $listing_date, PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $item_name, PDO::PARAM_STR);
 	$stmt->bindValue(':price', $price, PDO::PARAM_INT);
@@ -36,12 +44,13 @@ function pageController($dbc) {
 	$errors = array();
 
 	// this block checks to see if an error is going to be thrown
-	try {
-		$listing_date = Input::getDate('listing_date');
-		$listing_date = $listing_date->date;
-	} catch (Exception $e) {
-		array_push($errors, $e->getMessage());
-	}
+	// try {
+	// 	$listing_date = Input::getDate('listing_date');
+	// var_dump($listing_date->date);
+	// 	$listing_date = $listing_date->date;
+	// } catch (Exception $e) {
+	// 	array_push($errors, $e->getMessage());
+	// }
 	try {
 		$item_name = Input::getString('item_name');
 	} catch (Exception $e) {
@@ -67,15 +76,14 @@ function pageController($dbc) {
 	
 	if(!empty($_POST)){
 		// add inputed data into datebase
-		if (Input::notEmpty('listing_date') 
-			&& Input::notEmpty('item_name') 
+		if (Input::notEmpty('item_name') 
 			&& Input::notEmpty('price') 
 			&& Input::notEmpty('image') 
 			&& Input::notEmpty('description')){
 
 		// if no errors were thrown runs insert park
 			if(empty($errors)) {
-				insertListing($dbc, $listing_date, $item_name, $price, $image, $description);
+				insertListing($dbc, $item_name, $price, $image, $description);
 			} 
 			// elseif (Input::notEmpty('deleted_item_name')) {
 			// 	$deleteListing($dbc);
@@ -110,11 +118,11 @@ pageController($dbc);
 
 			<h2>Create a New Listing <?//= $username; ?></h2>
 	
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="listing_date">Date:</label>
 	        			<input type="date" id="listing_date" name="listing_date" placeholder="Listing Date" class="form-control">
 	        		</div>
-	        	</div>
+	        	</div> -->
 
 	        	<div class="form-group">
 	        		<label for="item_name">Item:</label>
