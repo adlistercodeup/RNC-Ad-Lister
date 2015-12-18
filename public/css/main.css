@@ -3,16 +3,25 @@ body {
 	background-color: #FAEBD7;
 }
 
-h1 {
+h1, h2 {
 	color: #675038;
 }
 
+label {
+	color: #675038;
+}
+.navbar-inverse .navbar-brand {
+    color: #91ECFC;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #91ECFC;
+}
 .form-control {
 	color: #675038;
 }
 
 .navbar-brand {
-	font-size: 32px;
+	font-size: 36px;
 	color: #1EAED0;
 }
 .dropdown {
@@ -36,9 +45,10 @@ h1 {
 .submit-button {
 	color: #675038;
 	font-size: 16px;
-	background-color: #1EAED0;
+	background-color: #91ECFC;
 	border: #675038;
 	height: 35px;
+	border: solid 2px #675038;
 
 }
 
@@ -50,14 +60,22 @@ h1 {
 
 	border: #1EAED0;
 	height: 30px;
-    width: 200px;
+    width: 300px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 80px;
 }
 /**/
 
 .form-control {
-	width: 30%;
+	width: 50%;
+}
+
+.form-users {
+	left: 200px;
+}
+
+.login {
+	top: 50px;
 }
 
 .container-fluid {
@@ -71,14 +89,14 @@ h1 {
 	display: inline;
 }
 #footer {
-	padding-top: 50px;
+	padding-top: 75px;
     text-align: center;
 }
 
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-      width: 50%;
-      height: 100%;
+      width: 40%;
+      height: 80%;
       margin: auto;
   }
 .testimonial {
@@ -87,7 +105,7 @@ h1 {
 
 #sell-stuff {
 	position: relative;
-	padding: 50px;
+	padding-top: 75px;
 	margin: auto;
 	color: #675038;
 	height: 50px;
@@ -97,17 +115,27 @@ h1 {
 
 }
 
-
+.carousel-caption {
+	top: 200px;
+}
 .btn-default {
 
 	position: relative;
 	margin: auto;
 	color: #675038;
 	height: 75px;
+	width: 300px;
 	font-size: 36px;
 	text-align: center;
 	font-weight: bold;
-	background-color: #1EAED0;
+	background-color: #91ECFC;
 	border: #675038 solid 5px;
 
+}
+
+.text-muted {
+	color: #675038;
+}
+#welcome {
+	text-align: center;
 }

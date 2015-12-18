@@ -13,12 +13,6 @@ including requires for classes -->
 		<?php include '../views/partials/navbar.php'; ?>
 
 		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-		    <!-- Indicators -->
-		    <ol class="carousel-indicators">
-		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		      <li data-target="#myCarousel" data-slide-to="1"></li>
-		      <li data-target="#myCarousel" data-slide-to="2"></li>
-		    </ol>
 
 		    <!-- Wrapper for slides -->
 		    <div class="carousel-inner" role="listbox">
@@ -26,24 +20,22 @@ including requires for classes -->
 		      	<div class="item active">
 		        	<img src="img/home_page/mother.jpg" width="460" height="550">
 				        <div class="carousel-caption">
-					        <h3 class="testimonial">Surprise Baby #3! We found everything we needed to get ready at a fraction of the cost.</h3>
-					        <h3 class="testimonial"><em>- Rebecca</em></h3>
+
+					        <h3 class="testimonial">"Surprise Baby #3! We found everything we needed to get ready at a fraction of the cost."<em> - Rebecca</em></h3>	   
 			        	</div>
 		    	</div>
 
 		      	<div class="item">
 		        	<img src="img/home_page/mother-and-baby.jpg" width="460" height="550">
 			        	<div class="carousel-caption">
-					        <h3 class="testimonial">We sold our gently used baby stuff for top dollar in no time!</h3>
-					        <h3 class="testimonial"><em>- Alisa</em></h3>
+					        <h3 class="testimonial">"We sold our out-grown baby clothes and toys for top dollar and super fast!"<em> - Alisa</em></h3>
 			        	</div>
 		      	</div>
 			    
 		      	<div class="item">
 		        	<img src="img/home_page/toddler_twins.jpg" width="460" height="550">
 			        	<div class="carousel-caption">
-				          <h3 class="testimonial">"As fast as these two are growing there is NO WAY we could afford 2X's everything without Finders Keepers."</h3>
-				          <h3 class="testimonial"><em>- Regina</em></h3>
+				          <h3 class="testimonial">"As fast as these two are growing there is NO WAY we could afford 2X's everything without Finders Keepers."<em> - Regina</em></h3>
 				        </div>
 		      	</div>
 
@@ -62,6 +54,7 @@ including requires for classes -->
 
 		<div id="sell-stuff">
 			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
+			<a href="ads.index.php" class="btn btn-default">SHOP</a>
 		</div>
 
 		  
@@ -78,3 +71,7 @@ including requires for classes -->
 </body>
 
 </html>
+
+
+
+
