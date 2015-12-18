@@ -112,11 +112,12 @@ insertData($dbc);
 	<?php require_once('../views/partials/header.php') ?> 
 	<?php require_once('../views/partials/navbar.php') ?>
 
-	<h1>Welcome!!!</h1>
 
 
-		<div class= "form_users">
+		<div class="col-md-6"class= "form_users">
 			<form role="form" method="post" action="users.create.php">
+	
+			<h1>Welcome!!!</h1>
 
 				<div class="form-group">
 			      <label for="username">Username:</label>
@@ -157,17 +158,28 @@ insertData($dbc);
 	    		</div>
 
 		    	<div class="form-group">        
-	              <div class="col-sm-offset-2 col-sm-10">
+	             
 	                <input id="search" class="submit-button" type="submit" value="Submit">
 	              </div>
 	          	</div>	
 			</form>
 		</div>
+		<div class="col-md-6"class= "form_users">
+			<form role="form" method="post" action="users.create.php">
+
+				<h1 class="login">Already a Member?</h1>
+				
+				<div>
+					<a href="auth.login.php" class="login btn btn-default">Login</a>
+				</div>
+
+			</form>
+
+		</div>
 
 	
 
 	</div>
-	<div id="footer">
 		<?php include '../views/partials/footer.php'; ?>
 	</div>
 

@@ -20,6 +20,8 @@ $results = selectListing($dbc);
 
 ?>
 
+
+
 <!doctype html>
 
 <html lang="en">
@@ -32,7 +34,7 @@ $results = selectListing($dbc);
 <body>
 
 	<div class="container">
-
+		<?php include '../views/partials/navbar.php'; ?>
 
 
 
@@ -49,6 +51,9 @@ $results = selectListing($dbc);
 
 			<?php } ?>
 
+		<div id="footer">
+		<?php include '../views/partials/footer.php'; ?>
+		</div>
 		
 	</div>
 </body>

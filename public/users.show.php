@@ -1,17 +1,28 @@
 <?php
+
+// show profile details and member's listings
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php require_once('../views/partials/head.php'); ?>
-	<title>Create User</title>
+	<title>Member Profile</title>
 </head>
 <body>
 	<div class="container">
 	<?php require_once('../views/partials/header.php') ?> 
 	<?php require_once('../views/partials/navbar.php') ?>
 
-	<h1>Welcome!!!</h1>
+	<h1 id="welcome">Welcome Back, !!!</h1>
+
+	<div id="sell-stuff">
+			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
+			<a href="ads.index.php" class="btn btn-default">SHOP</a>
+			<a href="users.edit.php" class="btn btn-default">Edit My Profile</a>
+	</div>
+
+
 </body>
 
 	</div>

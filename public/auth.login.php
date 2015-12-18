@@ -49,6 +49,8 @@ if (!empty($_POST)){
   <?php require_once('../views/partials/header.php') ?> 
   <?php require_once('../views/partials/navbar.php') ?>
 
+
+  <div class="col-md-6">
     <h2>Sign in</h2>
     <form role="form" method="post" action="users.show.php">
 
@@ -69,13 +71,10 @@ if (!empty($_POST)){
       <!-- <button type="submit" class="btn btn-default">Submit</button> -->
 
 
-            <div class="form-group">        
-                <div class="col-sm-offset-2 col-sm-10">
-                  <input type="submit" value="Submit">
-                </div>
-            </div>
+        <input id="submit" class="submit-button" type="submit" value = "Submit">
 
     </form>
+  </div>
 
   <?php require_once('../views/partials/footer.php') ?>
   </div>

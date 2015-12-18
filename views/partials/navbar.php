@@ -5,7 +5,7 @@
       <a class="navbar-brand" href="http://adlister.dev/">Finders Keepers!</a>
     </div>
 
-    <div>
+   <!--  <div>
       <ul class="nav navbar-nav">
 
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Kid Gear<span class="caret"></span></a>
@@ -29,7 +29,7 @@
           </ul>
         </li>
 
-      </ul>
+      </ul> -->
 
       <input id="search" class="search-block" type="text" name="googlesearch" placeholder= "Search">
         <input id="submit" class="submit-button" type="submit" value = "Submit">
@@ -37,6 +37,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="users.create.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="auth.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="auth.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      
       </ul>
 
     </div>
