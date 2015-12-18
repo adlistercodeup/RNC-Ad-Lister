@@ -12,7 +12,7 @@ class Auth {
 	protected static $username;
 	protected static $password;
 
-	private static function setStatic($username){
+	protected static function setStatic($username){
 		$user = User::findUser($username);
 		var_dump($user);
 
