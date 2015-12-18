@@ -3,6 +3,14 @@ body {
 	background-color: #FAEBD7;
 }
 
+h1 {
+	color: #675038;
+}
+
+.form-control {
+	color: #675038;
+}
+
 .navbar-brand {
 	font-size: 32px;
 	color: #1EAED0;
@@ -29,13 +37,17 @@ body {
 	color: #675038;
 	font-size: 16px;
 	background-color: #1EAED0;
-	border: #1EAED0;
+	border: #675038;
 	height: 35px;
 
 }
 
-.search-block {
+.form-group {
 	background-color: #FAEBD7;
+}
+
+.search-block {
+
 	border: #1EAED0;
 	height: 30px;
     width: 200px;

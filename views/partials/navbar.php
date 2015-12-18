@@ -31,8 +31,8 @@
 
       </ul>
 
-      <input id="search" class="search-block" type="text" name="googlesearch">
-        <input id="submit" class="submit-button" type="submit" value = "Search!">
+      <input id="search" class="search-block" type="text" name="googlesearch" placeholder= "Search">
+        <input id="submit" class="submit-button" type="submit" value = "Submit">
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="users.create.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

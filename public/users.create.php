@@ -69,7 +69,7 @@ function insertData($dbc) {
 				$userStmt->bindValue(':first_name', $firstName, PDO::PARAM_STR);
 				$userStmt->bindValue(':last_name', $lastName, PDO::PARAM_STR);
 				$userStmt->bindValue(':user_name', $userName, PDO::PARAM_STR);
-				$userStmt->bindValue(':password', $password, PDO::PARAM_STR);
+				$userStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
 				$userStmt->bindValue(':email', $email, PDO::PARAM_STR);
 				$userStmt->bindValue(':zipcode', $zipCode, PDO::PARAM_INT);
 
@@ -124,22 +124,26 @@ insertData($dbc);
 		    	</div>
 
 		    	<div class="form-group">
-	      			<label for="pwd">Password:</label>
+	      			<label
+	      			for="pwd">Password:</label>
 	      			<input type="password" class="form-control" id="pwd" required placeholder="Enter password" name="pwd">
 	    		</div>
 
 	    		<div class="form-group">
-			      <label for="firstname">Firstname:</label>
+			      <label
+			      for="firstname">Firstname:</label>
 			      <input type="text" class="form-control" id="firstname" placeholder="Firstname" name="firstname">
 		    	</div>
 
 		    	<div class="form-group">
-			      <label for="lastname">Lastname:</label>
+			      <label
+			      for="lastname">Lastname:</label>
 			      <input type="text" class="form-control" id="lastname" placeholder="Lastname" name="lastname">
 		    	</div>
 
 		    	<div class="form-group">
-			      <label for="email">Email:</label>
+			      <label
+			      for="email">Email:</label>
 			      <input type="email" class="form-control" id="email" placeholder="E-Mail" name="email">
 		    	</div>
 
@@ -154,7 +158,7 @@ insertData($dbc);
 
 		    	<div class="form-group">        
 	              <div class="col-sm-offset-2 col-sm-10">
-	                <input type="submit" value="Submit">
+	                <input id="search" class="submit-button" type="submit" value="Submit">
 	              </div>
 	          	</div>	
 			</form>
