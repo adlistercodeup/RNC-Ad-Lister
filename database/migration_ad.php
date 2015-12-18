@@ -11,7 +11,7 @@ $dbc->exec('DROP TABLE IF EXISTS ads');
 $adTable = 'CREATE TABLE ads (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	user_id INT UNSIGNED NOT NULL,
-	listing_date DATE,
+	listing_date DATETIME,
 	item_name VARCHAR(50),
 	price VARCHAR(20),
 	image VARCHAR(50), 

@@ -5,6 +5,7 @@
       <a class="navbar-brand" href="http://adlister.dev/">Finders Keepers!</a>
     </div>
 
+<!-- taking out the item categories and subcategories until we have basic functionality and can then add levels of specificity -->
    <!--  <div>
       <ul class="nav navbar-nav">
 
