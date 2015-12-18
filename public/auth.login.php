@@ -2,8 +2,8 @@
 require_once "../utils/Auth.php";
 require_once "../utils/Input.php";
 
-
-// $sessionId = session_id();
+$sessionId = session_id();
+if(!empty($_POST)){
 
 $username = Input::get('username');
 $password = Input::get('pwd');
@@ -17,13 +17,14 @@ Auth::attempt($username, $password);
 
 if (Auth::check()) {
 
-  session_start();
+
   
 	header("Location: users.show.php");
 	die();
 }
 
 Auth::user();
+}
 
 ?>
 
@@ -52,7 +53,7 @@ Auth::user();
 
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" class="form-control" id="username" placeholder="Username" name="username" required autofocus value="<?= $username ?>">
+        <input type="text" class="form-control" id="username" placeholder="Username" name="username" required autofocus placeholder = "Username">
       </div>
 
       <div class="form-group">
