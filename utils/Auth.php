@@ -42,7 +42,7 @@ class Auth {
 
 	public static function id()
 	{
-		return isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : null;
+		return isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : 1;
 	}
 	public static function check() {
 		if (isset($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] != "") {
