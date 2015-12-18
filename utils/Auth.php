@@ -28,7 +28,7 @@ class Auth {
 		
 		self::setStatic($username);
 
-		if (($username == self::username) && (password_verify($password, self::$password))) {
+		if (($username == self::$username) && (password_verify($password, self::$password))) {
 			$_SESSION['LOGGED_IN_USER'] = $username;
 			return true;
 		} else {
@@ -39,7 +39,7 @@ class Auth {
 	
 
 	public static function check() {
-		if ($_SESSION['LOGGED_IN_USER'] == true) {
+		if (isset($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] == true) {
 			return true;
 		} else {
 			return false;

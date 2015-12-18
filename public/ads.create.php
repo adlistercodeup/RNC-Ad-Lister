@@ -4,28 +4,15 @@ require_once '../database/adlist_db_connect.php';
 // require_once '../utils/Input.php';
 require_once '../utils/Auth.php';
 
-
 if (Auth::check()) {
 	if (Auth::user()){
-
-
 		$username = Input::get('username');
-
-
-
-
-
 	}
-
-
-
-
 }
 
 
-
 function insertListing($dbc, $listing_date, $item_name, $price, $image, $description) {
-	
+	var_dump($listing_date);
 	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
 		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
 	$stmt = $dbc->prepare($insert);
@@ -36,7 +23,9 @@ function insertListing($dbc, $listing_date, $item_name, $price, $image, $descrip
 	$stmt->bindValue(':description', $description, PDO::PARAM_STR);
 	$stmt->bindValue(':status', $status, PDO::PARAM_STR);
 
-	$stmt->bindValue(':user_id', ??? , PDO::PARAM_INT)
+	$stmt->bindValue(':user_id', 3 , PDO::PARAM_INT);
+	// ask Reni what is the key?
+	// $stmt->bindValue(':user_id', $_SESSION[''] , PDO::PARAM_INT);
 	$stmt->execute();
 }
 
@@ -70,17 +59,8 @@ function pageController($dbc) {
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
 	} 
-
-	try {
-		$category = Input::getString('status');
-	} catch (Exception $e) {
-		array_push($errors, $e->getMessage());
-	} 
+	 
 	
-
-
-
-
 	if(!empty($_POST)){
 		// add inputed data into datebase
 		if (Input::notEmpty('listing_date') 
@@ -100,20 +80,11 @@ function pageController($dbc) {
 				// } 
 				// else {
 				// 	echo "Please make a valid entry.";
-				// }
-				
-			}
-				
+				// }				
+			}		
 		}
-
 	}
-	
 }
-
-
-
-
-
 
 pageController($dbc);
 
@@ -123,27 +94,16 @@ pageController($dbc);
 
 <html lang="en">
 <head>
-
-	
 	<?php require_once('../views/partials/head.php'); ?>
 	<title>Creating Ad</title>
 </head>
 <body>
 
 	<div class="container">
-
-
-		/* Took out a table here that we can add later. */
-
-
-		<div>
-
-			<h2>Signed in as <?= {$username}; ?> !</h2>
-
-		</div>
-
-			
 	
+		<div>
+			<h2>Signed in as <?//= $username; ?> !</h2>
+		</div>
 
 		<div>
 			<form method="POST" role="form" action="ads.create.php">
@@ -183,7 +143,7 @@ pageController($dbc);
 	          		</div>
 	          	</div>
 
-	          	<div class="form-group">
+	          	<!-- <div class="form-group">
 	          		<label for="status" class="control-label col-sm-2">Status:</label>
 	          		<div class="col-sm-10">
 	          			<input list="status" id="status" name="status" placeholder="status" class="form-control">
@@ -193,18 +153,15 @@ pageController($dbc);
 	          				<option value="free">
 	          			</datalist>
 	          		</div>
-	          	</div>
+	          	</div> -->
 
 	          	<div class="form-group">        
       				<div class="col-sm-offset-2 col-sm-10">
         				<input type="submit" value="submit">
       				</div>
-    			</div>
-
-	        	
+    			</div>	        	
    			</form>
 		</div>
-
 	</div>
 </body>
 </html>
