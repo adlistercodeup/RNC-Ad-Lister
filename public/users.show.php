@@ -6,17 +6,14 @@ require_once '../bootstrap.php';
 
 session_start();
 
-while (Auth::check()) {
-
-
+while (Auth::check()) 
+{
 	$username = Auth::user();
 
-	var_dump($username);
-	
+	var_dump($username);	
 }
-
-
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -36,11 +33,11 @@ while (Auth::check()) {
 			<a href="users.edit.php" class="btn btn-default">Edit My Profile</a>
 	</div>
 
-
-</body>
-
-	</div>
 	<div id="footer">
 		<?php include '../views/partials/footer.php'; ?>
+
 	</div>
+
+	</div>
+</body>
 </html>

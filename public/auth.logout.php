@@ -22,3 +22,27 @@ endSession();
 header("Location: auth.login.php");
 die();
 ?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <?php require_once('../views/partials/head.php'); ?>
+    <title>Where treasures are found and shared.</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <?php include '../views/partials/navbar.php'; ?>
+
+        <h1>Logged out</h1>
+
+        <div id="footer">
+        <?php include '../views/partials/footer.php'; ?>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
