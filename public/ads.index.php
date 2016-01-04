@@ -1,8 +1,5 @@
 <?php
-require_once '../database/adlist_db_config.php';
-require_once '../database/adlist_db_connect.php';
-require_once '../utils/Input.php';
-
+require_once '../bootstrap.php';
 
 function selectListing($dbc) 
 {	
@@ -45,10 +42,10 @@ $results = selectListing($dbc);
 			</div>
 		<?php } ?>
 
-		<div id="footer">
-			<?php include '../views/partials/footer.php'; ?>
-		</div>
 		
 	</div>
+
+	<?php require_once '../views/partials/footer.php'; ?>
+	<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

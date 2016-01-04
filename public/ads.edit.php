@@ -2,8 +2,6 @@
 
 require_once '../bootstrap.php';
 
-session_start();
-
 if (Auth::check()) 
 {
 	if (Auth::user())
@@ -12,12 +10,12 @@ if (Auth::check())
 	}
 }
 
-function presentListing()
-{
+// function presentListing()
+// {
 	
 
 
-}
+// }
 
 
 function updateListing($dbc, $item_name, $price, $image, $description, $status = "active") 
@@ -48,7 +46,8 @@ function updateListing($dbc, $item_name, $price, $image, $description, $status =
 	$stmt->execute();
 }
 
-function pageController($dbc) {
+function pageController($dbc)
+{
 	$errors = array();
 
 	// this block checks to see if an error is going to be thrown
@@ -124,7 +123,7 @@ pageController($dbc);
 		<div class="col-md-6"class= "form_users">
 			<form method="POST" role="form" action="ads.create.php">
 
-			<h2>Create a New Listing <?//= $username; ?></h2>
+			<h2>Create a New Listing <?= $username; ?></h2>
 	
 				<!-- <div class="form-group">
 					<label for="listing_date">Date:</label>
@@ -172,12 +171,14 @@ pageController($dbc);
       				<div class="col-sm-offset-2 col-sm-10">
         				<input class="submit-button" type="submit" value="submit">
       				</div>
-    			</div>	        	
+    			</div>	
+
    			</form>
-   			</div>
-			  	<?php require_once('../views/partials/footer.php') ?>
-			</div>
+   			
 		</div>
 	</div>
+
+	<?php require_once '../views/partials/footer.php'; ?>
+	<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

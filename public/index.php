@@ -1,36 +1,8 @@
-/*
-
-
-
-switch ($_SERVER['REQUEST_URI']) 
-{
-    case '/ads':
-        include 'ads/index.php';
-        break;
-    case '/ads/show':
-        include 'ads/show.php';
-        break;
-    default:
-        include 'home.php';
-        break;
-}
-
-
-
-?> */
-
 <?php
 
-session_start();
+require_once '../bootstrap.php';
 
 ?>
-
-
-
-
-
-
-
 <!-- listening to user input
 including requires for classes -->
 <!doctype html>
@@ -53,7 +25,6 @@ including requires for classes -->
 		      	<div class="item active">
 		        	<img src="img/home_page/mother.jpg" width="460" height="550">
 				        <div class="carousel-caption">
-
 					        <h3 class="testimonial">"Surprise Baby #3! We found everything we needed to get ready at a fraction of the cost."<em> - Rebecca</em></h3>	   
 			        	</div>
 		    	</div>
@@ -66,7 +37,7 @@ including requires for classes -->
 		      	</div>
 			    
 		      	<div class="item">
-		        	<img src="img/home_page/toddler_twins.jpg" width="460" height="550">
+		        	<img src="/img/home_page/toddler_twins.jpg" width="460" height="550">
 			        	<div class="carousel-caption">
 				          <h3 class="testimonial">"As fast as these two are growing there is NO WAY we could afford 2X's everything without Finders Keepers."<em> - Regina</em></h3>
 				        </div>
@@ -85,34 +56,20 @@ including requires for classes -->
 			    </a>
 	</div>
 
-	<div>
-		
+	<div class="logInMessage">	
 		<?php if (isset($_SESSION['logInMessage'])) { ?>
 		 	<h2><?= $_SESSION['logInMessage'];  ?></h2>
 		<?php } ?>
-
-
-
 	</div>
 
-		<div id="sell-stuff">
-			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
-			<a href="ads.index.php" class="btn btn-default">SHOP</a>
-		</div>
-
-		  
-
-	<div id="footer">
-		<?php include '../views/partials/footer.php'; ?>
+	<div id="sell-stuff">
+		<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
+		<a href="ads.index.php" class="btn btn-default">SHOP</a>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="js/main.js"></script>
-
+	<?php require_once '../views/partials/footer.php'; ?>
+	<?php require_once '../views/partials/script.php'; ?>
 </body>
-
 </html>
 
 

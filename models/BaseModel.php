@@ -2,10 +2,7 @@
 
 require '../bootstrap.php';
 
-// make sure attributes is protected if accessed in the child class.
 class Model {
-
-
 
 	// Array to store our key/value 
 	public $attributes = [];	
@@ -16,24 +13,25 @@ class Model {
 	//constructor
 	public function __construct()
     {
-
         self::dbConnect();
     }
     //Connect to the DB
     protected static function dbConnect()
     {
-
-      
-
         //self:: will ensure that all children use this database connection and private will ensure that children still can't 
         //access this method through the public constructors which calls this method
         //if the database is not connected, then connect
         if (!isset(static::$dbc)) 
         {
+            // Get new instance of PDO object
 
+        // $dbc = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
          $dbc = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';dbname=' . $_ENV["DB_NAME"], $_ENV["DB_USER"], $_ENV["DB_PASS"]);
 
-            
+         // Tell PDO to throw exceptions on error
+
+        $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         	static::$dbc = $dbc;
         }
     }
@@ -53,11 +51,13 @@ class Model {
         // Store the $key 'key' to hold $value in $attributes array
         $this->attributes[$name] = $value;
     }
+
     public static function getTableName()
     {
     	return self::$table;
     }
-    private function insert ()
+
+    private function insert()
     {
         // @TODO: Use prepared statements to ensure data security - escape and trim
 		//Describe will describe the current database
@@ -92,7 +92,8 @@ class Model {
 		$stmt->execute();
 		array_unshift ($this->attributes, $id);
     }
-    public function update($id){
+    public function update($id)
+    {
         //Ensure that update is properly handled with the id key
     	 // @TODO: Use prepared statements to ensure data security - escape and trim
 		$table_columns = array_keys($this->attributes);
@@ -115,6 +116,7 @@ class Model {
 		//add the id back
 		$this->attributes['id'] = $id;
     }
+    
     public static function find($id)
     {
         // Get connection to the database - needed because find does not need an object instantiation and therefore

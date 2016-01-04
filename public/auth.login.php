@@ -1,8 +1,7 @@
 <?php
-require_once "../utils/Auth.php";
-require_once "../utils/Input.php";
 
-session_start();
+
+require_once '../bootstrap.php';
 
 if(!empty($_POST)){
 
@@ -10,7 +9,6 @@ $username = Input::get('username');
 $password = Input::get('pwd');
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
 
 $message = '';
 
@@ -25,29 +23,18 @@ $username = Auth::user();
 }
 
 ?>
-
-
 <!doctype html>
 <html lang='en'>
 <head>
-
     <?php require_once('../views/partials/head.php'); ?>
-    <title>Login form for Adlister</title>
-    
+    <title>Login form for Adlister</title>    
 </head>
-
-
 <body>
-
   <div class="container">
-
-  <?php require_once('../views/partials/header.php') ?> 
   <?php require_once('../views/partials/navbar.php') ?>
-
-
   <div class="col-md-6">
     <h2>Sign in</h2>
-    <form role="form" method="post" action="users.show.php">
+    <form role="form" method="post" action="#">
 
       <div class="form-group">
         <label for="username">Username:</label>
@@ -71,13 +58,7 @@ $username = Auth::user();
     </form>
   </div>
 
-  <?php require_once('../views/partials/footer.php') ?>
   </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>

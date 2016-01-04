@@ -26,9 +26,7 @@ foreach ($adLists as $adList) {
 	$stmt->bindValue(':description', $adList['description'], PDO::PARAM_STR);
 	$stmt->bindValue(':status', $adList['status'], PDO::PARAM_STR);
 
-
 	$stmt->execute();
-
 }
 
 

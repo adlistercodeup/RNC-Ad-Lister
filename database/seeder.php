@@ -25,17 +25,17 @@ $userLists = [
 foreach ($userLists as $userList) {
 
 	$userData = 'INSERT INTO user_account (first_name, last_name, user_name, password, email, zipcode)
-							VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
+				                  VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
 
 
-				$stmt = $dbc->prepare($userData);
-			
-				$stmt->bindValue(':first_name', $userList['first_name'], PDO::PARAM_STR);
-				$stmt->bindValue(':last_name', $userList['last_name'], PDO::PARAM_STR);
-				$stmt->bindValue(':user_name', $userList['user_name'], PDO::PARAM_STR);
-				$stmt->bindValue(':password', $userList['password'], PDO::PARAM_STR);
-				$stmt->bindValue(':email', $userList['email'], PDO::PARAM_STR);
-				$stmt->bindValue(':zipcode', $userList['zipcode'], PDO::PARAM_INT);
+	$stmt = $dbc->prepare($userData);
+
+	$stmt->bindValue(':first_name', $userList['first_name'], PDO::PARAM_STR);
+	$stmt->bindValue(':last_name', $userList['last_name'], PDO::PARAM_STR);
+	$stmt->bindValue(':user_name', $userList['user_name'], PDO::PARAM_STR);
+	$stmt->bindValue(':password', $userList['password'], PDO::PARAM_STR);
+	$stmt->bindValue(':email', $userList['email'], PDO::PARAM_STR);
+	$stmt->bindValue(':zipcode', $userList['zipcode'], PDO::PARAM_INT);
 
 	$stmt->execute();
 

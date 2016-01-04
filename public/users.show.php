@@ -4,13 +4,11 @@
 
 require_once '../bootstrap.php';
 
-session_start();
-
-while (Auth::check()) 
+if (Auth::check()) 
 {
 	$username = Auth::user();
 
-	var_dump($username);	
+		
 }
 ?>
 

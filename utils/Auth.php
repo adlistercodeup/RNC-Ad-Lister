@@ -16,8 +16,6 @@ class Auth
 	{
 		$user = User::findUser($username);
 
-		// var_dump($user);
-
 		self::$username = $user->attributes['username'];
 		self::$password = $user->attributes['password'];
 	}
@@ -25,8 +23,6 @@ class Auth
 	
 	public static function attempt($username, $password) 
 	{
-
-
 		$log = new Log();
 		
 		self::setStatic($username);
