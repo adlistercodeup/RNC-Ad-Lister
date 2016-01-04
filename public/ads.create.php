@@ -93,10 +93,15 @@ function pageController($dbc)
 			// }				
 			
 		}
+		
 	}
 }
 
 pageController($dbc);
+
+
+
+
 
 ?>
 

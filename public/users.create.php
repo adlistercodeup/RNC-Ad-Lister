@@ -48,23 +48,45 @@ function insertData($dbc)
 
 		if (Input::notEmpty('username') && Input::notEmpty('pwd') && Input::notEmpty('firstname') && Input::notEmpty('lastname') && Input::notEmpty('email') && Input::notEmpty('zipcode')) 
 		{
-				$userData = 'INSERT INTO user_account (first_name, last_name, user_name, password, email, zipcode)
-							VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
+			// create new instance of user class
 
-				$userStmt = $dbc->prepare($userData);
+			$user = new User;
+
+				$user->first_name = $firstName;
+				$user->last_name = $lastName;
+				$user->user_name = $userName;
+				$user->password = password_hash($password, PASSWORD_DEFAULT);
+				$user->email = $email;
+				$user->zipcode = $zipCode;
+
+			$user->save();
+
+			$_SESSION['logInMessage'] = "Thanks for signing up. Please sign in to access your profile!!!";
+
+			header("Location:index.php");
+			die();
+
+
+				// $userData = 'INSERT INTO user_account (first_name, last_name, user_name, password, email, zipcode)
+				// 			VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
+
+				// $userStmt = $dbc->prepare($userData);
 			
-				$userStmt->bindValue(':first_name', $firstName, PDO::PARAM_STR);
-				$userStmt->bindValue(':last_name', $lastName, PDO::PARAM_STR);
-				$userStmt->bindValue(':user_name', $userName, PDO::PARAM_STR);
-				$userStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-				$userStmt->bindValue(':email', $email, PDO::PARAM_STR);
-				$userStmt->bindValue(':zipcode', $zipCode, PDO::PARAM_INT);
+				// $userStmt->bindValue(':first_name', $firstName, PDO::PARAM_STR);
+				// $userStmt->bindValue(':last_name', $lastName, PDO::PARAM_STR);
+				// $userStmt->bindValue(':user_name', $userName, PDO::PARAM_STR);
+				// $userStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+				// $userStmt->bindValue(':email', $email, PDO::PARAM_STR);
+				// $userStmt->bindValue(':zipcode', $zipCode, PDO::PARAM_INT);
 
-				try {
-					$userStmt->execute();
-				} catch (Exception $e) {
-					$errors[] = $e->getMessage();
-				}
+				// try {
+				// 	$userStmt->execute();
+				// } catch (Exception $e) {
+				// 	$errors[] = $e->getMessage();
+				// }
+
+
+				
 		}
 	}
 	return $errors;
@@ -72,12 +94,7 @@ function insertData($dbc)
 
 insertData($dbc);
 
-// function changePage(){
-// 	header("Location: users.show.php");
-// 	die();
-// }
 
-// changePage();
 ?>
 
 <!doctype html>
@@ -90,6 +107,13 @@ insertData($dbc);
 	<div class="container">
 	<?php require_once('../views/partials/header.php') ?> 
 	<?php require_once('../views/partials/navbar.php') ?>
+		<div id="message">
+
+
+
+
+
+		</div>
 		<div class="col-md-6"class= "form_users">
 			<form role="form" method="post" action="users.create.php">
 	
