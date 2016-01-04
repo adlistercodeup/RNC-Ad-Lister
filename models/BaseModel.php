@@ -1,9 +1,12 @@
-
 <?php
 
-// make sure attributes is protected if accessed in the child class.
+require '../bootstrap.php';
 
+// make sure attributes is protected if accessed in the child class.
 class Model {
+
+
+
 	// Array to store our key/value 
 	public $attributes = [];	
 	//table will represent a database table
@@ -13,22 +16,25 @@ class Model {
 	//constructor
 	public function __construct()
     {
+
         self::dbConnect();
     }
     //Connect to the DB
     protected static function dbConnect()
     {
-    	//self:: will ensure that all children use this database connection and private will ensure that children still can't 
-    	//access this method through the public constructors which calls this method
+
+      
+
+        //self:: will ensure that all children use this database connection and private will ensure that children still can't 
+        //access this method through the public constructors which calls this method
         //if the database is not connected, then connect
         if (!isset(static::$dbc)) 
         {
 
-            require_once '../database/adlist_db_config.php';
-            require_once '../database/adlist_db_connect.php';
+         $dbc = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';dbname=' . $_ENV["DB_NAME"], $_ENV["DB_USER"], $_ENV["DB_PASS"]);
 
+            
         	static::$dbc = $dbc;
-
         }
     }
     //Get a value from attributes based on name (name == 'key' or 'index') using magic getter
