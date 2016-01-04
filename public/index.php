@@ -1,4 +1,4 @@
-/*
+<?php
 
 switch ($_SERVER['REQUEST_URI']) 
 {
@@ -15,7 +15,7 @@ switch ($_SERVER['REQUEST_URI'])
 
 
 
-?> */
+?> 
 
 
 
