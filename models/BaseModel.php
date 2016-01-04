@@ -1,6 +1,6 @@
 <?php
 
-require '../bootstrap.php';
+// require '../bootstrap.php';
 
 // make sure attributes is protected if accessed in the child class.
 class Model {

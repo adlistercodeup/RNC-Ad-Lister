@@ -2,8 +2,6 @@
 
 require_once '../bootstrap.php';
 
-session_start();
-
 if (Auth::check()) 
 {
 	if (Auth::user())
