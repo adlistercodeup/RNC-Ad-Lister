@@ -19,8 +19,8 @@ function endSession()
 }
 endSession();
 
-header("Location: auth.login.php");
-die();
+// header("Location: auth.login.php");
+// die();
 ?>
 
 <!doctype html>

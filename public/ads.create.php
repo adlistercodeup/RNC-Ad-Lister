@@ -116,7 +116,9 @@ pageController($dbc);
 		<div class="col-md-6"class= "form_users">
 			<form method="POST" role="form" action="ads.create.php">
 
-			<h2>Create a New Listing <?= $username; ?></h2>
+			<h2>Create a New Listing 
+			<!-- 	<?= $username; ?> -->
+			</h2>
 	
 				<!-- <div class="form-group">
 					<label for="listing_date">Date:</label>
@@ -138,7 +140,9 @@ pageController($dbc);
 
 	        	<div class="form-group">
 	        		<label for="image">Image:</label>
-	          			<input type="text" id="image" name="image" placeholder="Image" class="form-control" step="any">
+	        		<span class="btn btn-default btn-file">Browse
+	          			<input type="file" id="image" name="image" class="form-control" step="any" size="60">
+	          		</span>
 	          		</div>
 	          	</div>
 
