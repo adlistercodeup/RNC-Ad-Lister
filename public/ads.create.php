@@ -4,25 +4,22 @@ require_once '../bootstrap.php';
 
 session_start();
 
-if (Auth::check()) {
-	if (Auth::user()){
-		$username = Input::get('username');
+if (Auth::check()) 
+{
+	if (Auth::user())
+	{
+		$username = Auth::user();
 	}
 }
 
 
-function insertListing($dbc, $item_name, $price, $image, $description, $status = "active") {
-	
-
+function insertListing($dbc, $item_name, $price, $image, $description, $status = "active") 
+{	
 	$userId = Auth::id();
-
 
 	$d = Input::getDate('now');
 
 	$listing_date = $d->format('Y-m-d');
-
-	var_dump($listing_date);
-
 
 	$insert = "INSERT INTO ads(listing_date, item_name, price, image, description, status, user_id) 
 		VALUES (:listing_date, :item_name, :price, :image, :description, :status, :user_id)";
@@ -40,7 +37,8 @@ function insertListing($dbc, $item_name, $price, $image, $description, $status =
 	$stmt->execute();
 }
 
-function pageController($dbc) {
+function pageController($dbc) 
+{
 	$errors = array();
 
 	// this block checks to see if an error is going to be thrown
@@ -74,7 +72,8 @@ function pageController($dbc) {
 	} 
 	 
 	
-	if(!empty($_POST)){
+	if(!empty($_POST))
+	{
 		// add inputed data into datebase
 		if (Input::notEmpty('item_name') 
 			&& Input::notEmpty('price') 
@@ -82,7 +81,8 @@ function pageController($dbc) {
 			&& Input::notEmpty('description')){
 
 		// if no errors were thrown runs insert park
-			if(empty($errors)) {
+			if(empty($errors)) 
+			{
 				insertListing($dbc, $item_name, $price, $image, $description);
 			} 
 			// elseif (Input::notEmpty('deleted_item_name')) {
@@ -116,7 +116,9 @@ pageController($dbc);
 		<div class="col-md-6"class= "form_users">
 			<form method="POST" role="form" action="ads.create.php">
 
-			<h2>Create a New Listing <?//= $username; ?></h2>
+			<h2>Create a New Listing 
+			<!-- 	<?= $username; ?> -->
+			</h2>
 	
 				<!-- <div class="form-group">
 					<label for="listing_date">Date:</label>
@@ -138,7 +140,9 @@ pageController($dbc);
 
 	        	<div class="form-group">
 	        		<label for="image">Image:</label>
-	          			<input type="text" id="image" name="image" placeholder="Image" class="form-control" step="any">
+	        		<span class="btn btn-default btn-file">Browse
+	          			<input type="file" id="image" name="image" class="form-control" step="any" size="60">
+	          		</span>
 	          		</div>
 	          	</div>
 

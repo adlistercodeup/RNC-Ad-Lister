@@ -4,8 +4,8 @@ require_once '../database/adlist_db_connect.php';
 require_once '../utils/Input.php';
 
 
-function selectListing($dbc) {
-	
+function selectListing($dbc) 
+{	
 	$activeListing = "SELECT * FROM ads WHERE status = 'active' LIMIT 25";
 
 	$stmt = $dbc->query($activeListing);
@@ -23,7 +23,6 @@ $results = selectListing($dbc);
 
 
 <!doctype html>
-
 <html lang="en">
 <head>
 
@@ -36,23 +35,18 @@ $results = selectListing($dbc);
 	<div class="container">
 		<?php include '../views/partials/navbar.php'; ?>
 
-
-
 		<div>
 			<h2>Active listing!!!</h2>
 		</div>
 
 		<?php foreach ($results as $key => $result) { ?>
 			<div>
-
 				<h3><a href="ads.show.php?id=<?= $result['user_id'] ?>"> <span> <?= $result['listing_date']; ?> </span> <span> <?= $result['item_name']; ?> </span <span>$ <?=$result['price']; ?></span></a> </h3><hr>
-
 			</div>
-
-			<?php } ?>
+		<?php } ?>
 
 		<div id="footer">
-		<?php include '../views/partials/footer.php'; ?>
+			<?php include '../views/partials/footer.php'; ?>
 		</div>
 		
 	</div>

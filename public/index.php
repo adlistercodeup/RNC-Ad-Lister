@@ -1,3 +1,25 @@
+<?php
+
+switch ($_SERVER['REQUEST_URI']) 
+{
+    case '/ads':
+        include 'ads/index.php';
+        break;
+    case '/ads/show':
+        include 'ads/show.php';
+        break;
+    default:
+        include 'home.php';
+        break;
+}
+
+
+
+?>
+
+
+
+
 <!-- listening to user input
 including requires for classes -->
 <!doctype html>
