@@ -1,6 +1,11 @@
 
 
+<?php
 
+
+session_start();
+
+?>
 
 
 <!-- listening to user input
@@ -55,6 +60,16 @@ including requires for classes -->
 			      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			      <span class="sr-only">Next</span>
 			    </a>
+	</div>
+
+	<div>
+		
+		<?php if (isset($_SESSION['logInMessage'])) { ?>
+		 	<h2><?= $_SESSION['logInMessage'];  ?></h2>
+		<?php } ?>
+
+
+
 	</div>
 
 		<div id="sell-stuff">
