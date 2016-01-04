@@ -1,11 +1,4 @@
-
-
-<?php
-
-
-session_start();
-
-?>
+<?php  require_once '../bootstrap.php'; ?>
 
 
 <!-- listening to user input
@@ -45,32 +38,29 @@ including requires for classes -->
 		      	<div class="item">
 		        	<img src="img/home_page/toddler_twins.jpg" width="460" height="550">
 			        	<div class="carousel-caption">
-				          <h3 class="testimonial">"As fast as these two are growing there is NO WAY we could afford 2X's everything without Finders Keepers."<em> - Regina</em></h3>
+				            <h3 class="testimonial">"As fast as these two are growing there is NO WAY we could afford 2X's everything without Finders Keepers."<em> - Regina</em></h3>
 				        </div>
 		      	</div>
-
 			</div>  
 
 		  <!-- Left and right controls -->
-			    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			      <span class="sr-only">Previous</span>
-			    </a>
-			    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			      <span class="sr-only">Next</span>
-			    </a>
-	</div>
+		    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		      <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		      <span class="sr-only">Next</span>
+		    </a>
+		</div>
 
-	<div>
+
 		
 		<?php if (isset($_SESSION['logInMessage'])) { ?>
 		 	<h2><?= $_SESSION['logInMessage'];  ?></h2>
 		<?php } ?>
 
 
-
-	</div>
 
 		<div id="sell-stuff">
 			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>

@@ -2,10 +2,9 @@
 
 require_once '../bootstrap.php';
 
-session_start();
-
-if (Auth::check()) 
+if (Auth::user()) 
 {
+	
 	if (Auth::user())
 	{
 		$username = Auth::user();
@@ -122,7 +121,7 @@ pageController($dbc);
 			<form method="POST" role="form" action="ads.create.php">
 
 			<h2>Create a New Listing 
-			<!-- 	<?= $username; ?> -->
+			<?= $username; ?>
 			</h2>
 	
 				<!-- <div class="form-group">

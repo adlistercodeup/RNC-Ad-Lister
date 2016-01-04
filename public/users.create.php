@@ -1,7 +1,6 @@
 <?php
 
 require_once '../bootstrap.php';
-session_start();
 
 function insertData($dbc) 
 {
@@ -55,7 +54,7 @@ function insertData($dbc)
 				$user->first_name = $firstName;
 				$user->last_name = $lastName;
 				$user->user_name = $userName;
-				$user->password = password_hash($password, PASSWORD_DEFAULT);
+				$user->password = $password;
 				$user->email = $email;
 				$user->zipcode = $zipCode;
 
