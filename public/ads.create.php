@@ -29,8 +29,7 @@ function insertListing($dbc, $item_name, $price, $image, $description, $status =
 	$stmt->bindValue(':status', $status, PDO::PARAM_STR);
 
 	$stmt->bindValue(':user_id', $userId , PDO::PARAM_INT);
-	// ask Reni what is the key?
-	// $stmt->bindValue(':user_id', $_SESSION[''] , PDO::PARAM_INT);
+
 	$stmt->execute();
 }
 
