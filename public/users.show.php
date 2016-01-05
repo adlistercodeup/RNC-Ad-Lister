@@ -7,7 +7,7 @@ require_once '../bootstrap.php';
 
 if (Auth::check()) 
 {
-	// $username = Auth::user(); 	
+	$username = Auth::user(); 	
 }
 ?>
 
@@ -19,10 +19,9 @@ if (Auth::check())
 </head>
 <body>
 	<div class="container">
-	<?php require_once('../views/partials/header.php') ?> 
 	<?php require_once('../views/partials/navbar.php') ?>
 
-	<h1 id="welcome">Welcome Back, !!!</h1>
+	<h1 id="welcome">Welcome Back, <?= $username;?> !!!</h1>
 
 	<div id="sell-stuff">
 			<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
