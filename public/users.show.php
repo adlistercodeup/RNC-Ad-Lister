@@ -4,11 +4,10 @@
 
 require_once '../bootstrap.php';
 
+
 if (Auth::check()) 
 {
 	$username = Auth::user();
-
-		
 }
 ?>
 

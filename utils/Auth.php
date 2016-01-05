@@ -1,11 +1,4 @@
-
 <?php
-
-// copied this from my Log file will work more on this later.
-
-require_once 'Logger.php';
-require_once 'Input.php';
-require '../models/User.php';
 
 class Auth 
 {
@@ -16,18 +9,30 @@ class Auth
 	{
 		$user = User::findUser($username);
 
+
 		self::$username = $user->attributes['username'];
 		self::$password = $user->attributes['password'];
+
+		// Had a conflict. Not sure which one is right.
+		// self::$username = $user->user_name;
+		// self::$password = $user->password;
+
 	}
 
 	
 	public static function attempt($username, $password) 
 	{
+
 		$log = new Log();
-		
+
 		self::setStatic($username);
 
-		if (($username == self::$username) && (password_verify($password, self::$password))) 
+		var_dump($password);
+		var_dump(self::$password);
+
+		var_dump(password_verify($password, self::$password));
+
+		if (($username == self::$username) && (password_verify(	$password, self::$password))) 
 		{
 			$_SESSION['LOGGED_IN_USER'] = $username;
 			$user = User::findUser($username);
@@ -35,6 +40,7 @@ class Auth
 
 			return true;
 		} else {
+			var_dump('false attempt');
 			return false;
 		}
 	} 

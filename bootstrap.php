@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 // Load the environment variables.
 $_ENV = include '.env.php';
 

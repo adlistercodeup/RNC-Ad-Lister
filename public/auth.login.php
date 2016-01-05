@@ -1,25 +1,24 @@
 <?php
 
-
 require_once '../bootstrap.php';
 
 if(!empty($_POST)){
 
-$username = Input::get('username');
-$password = Input::get('pwd');
+  $username = Input::get('username');
+  $password = Input::get('pwd');
 
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$message = '';
+  $message = '';
 
-Auth::attempt($username, $password);
+  Auth::attempt($username, $password);
 
-if (Auth::check()) {
-	header("Location: users.show.php");
-	die();
-}
+  if (Auth::check()) {
+  	header("Location: users.show.php");
+  	die();
+  }
 
-$username = Auth::user();
+  $username = Auth::user();
 }
 
 ?>
@@ -34,7 +33,8 @@ $username = Auth::user();
   <?php require_once('../views/partials/navbar.php') ?>
   <div class="col-md-6">
     <h2>Sign in</h2>
-    <form role="form" method="post" action="#">
+
+    <form role="form" method="post" action="auth.login.php">
 
       <div class="form-group">
         <label for="username">Username:</label>
