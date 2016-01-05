@@ -10,14 +10,6 @@ if (Auth::check())
 	}
 }
 
-function presentListing()
-{
-	
-
-
-}
-
-
 function updateListing($dbc, $item_name, $price, $image, $description, $status = "active") 
 {
 	$userId = Auth::id();
@@ -26,8 +18,6 @@ function updateListing($dbc, $item_name, $price, $image, $description, $status =
 	$d = Input::getDate('now');
 
 	$listing_date = $d->format('Y-m-d')
-
-
 
 	$insert = "UPDATE ads SET item_name='', price='', image='', description='' 
 	where user_id= 
@@ -46,7 +36,8 @@ function updateListing($dbc, $item_name, $price, $image, $description, $status =
 	$stmt->execute();
 }
 
-function pageController($dbc) {
+function pageController($dbc)
+{
 	$errors = array();
 
 	// this block checks to see if an error is going to be thrown
@@ -110,19 +101,17 @@ pageController($dbc);
 
 <html lang="en">
 <head>
-	<?php require_once('../views/partials/head.php'); ?>
+<?php require_once('../views/partials/head.php'); ?>
 	<title>Creating Ad</title>
 </head>
 <body>
 	<div class="container">
-		<?php require_once('../views/partials/header.php') ?>
   		<?php require_once('../views/partials/navbar.php') ?>
-	
 
 		<div class="col-md-6"class= "form_users">
 			<form method="POST" role="form" action="ads.create.php">
 
-			<h2>Create a New Listing <?//= $username; ?></h2>
+			<h2>Create a New Listing <?= $username; ?></h2>
 	
 				<!-- <div class="form-group">
 					<label for="listing_date">Date:</label>
@@ -170,12 +159,14 @@ pageController($dbc);
       				<div class="col-sm-offset-2 col-sm-10">
         				<input class="submit-button" type="submit" value="submit">
       				</div>
-    			</div>	        	
+    			</div>	
+
    			</form>
-   			</div>
-			  	<?php require_once('../views/partials/footer.php') ?>
-			</div>
+   			
 		</div>
 	</div>
+
+<?php require_once '../views/partials/footer.php'; ?>
+<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

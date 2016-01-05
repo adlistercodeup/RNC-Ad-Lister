@@ -49,7 +49,6 @@ class Input
 
     public static function getString($key) 
     {
-
         $value = trim(self::get($key));
 
         if (!is_string($value)) 

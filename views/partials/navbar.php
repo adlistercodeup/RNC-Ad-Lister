@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -9,7 +8,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/users.create.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="/auth.login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="/auth.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>    
+        <li><a href="/auth.logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
-    </div>
+  </div>
 </nav>

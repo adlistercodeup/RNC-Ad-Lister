@@ -2,15 +2,13 @@
 
 require_once '../bootstrap.php';
 
-if (Auth::user()) 
+if (Auth::check())
 {
-	
-	if (Auth::user())
+	if (Auth::user()) 
 	{
 		$username = Auth::user();
 	}
 }
-
 
 function insertListing($dbc, $item_name, $price, $image, $description, $status = "active") 
 {	
@@ -40,14 +38,6 @@ function pageController($dbc)
 {
 	$errors = array();
 
-	// this block checks to see if an error is going to be thrown
-	// try {
-	// 	$listing_date = Input::getDate('listing_date');
-	// var_dump($listing_date->date);
-	// 	$listing_date = $listing_date->date;
-	// } catch (Exception $e) {
-	// 	array_push($errors, $e->getMessage());
-	// }
 	try {
 		$item_name = Input::getString('item_name');
 	} catch (Exception $e) {
@@ -68,8 +58,7 @@ function pageController($dbc)
 		$description = Input::getString('description');
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
-	} 
-	 
+	} 	 
 	
 	if(!empty($_POST))
 	{
@@ -92,43 +81,29 @@ function pageController($dbc)
 			// }				
 			
 		}
-		
+
 	}
 }
 
 pageController($dbc);
 
-
-
-
-
 ?>
 
 <!doctype html>
-
 <html lang="en">
 <head>
-	<?php require_once('../views/partials/head.php'); ?>
+<?php require_once('../views/partials/head.php'); ?>
 	<title>Creating Ad</title>
 </head>
 <body>
 	<div class="container">
-		<?php require_once('../views/partials/header.php') ?>
-  		<?php require_once('../views/partials/navbar.php') ?>
-	
+  	<?php require_once('../views/partials/navbar.php') ?>
 
 		<div class="col-md-6"class= "form_users">
 			<form method="POST" role="form" action="ads.create.php">
 
-			<h2>Create a New Listing 
-			<?= $username; ?>
+			<h2>Create a New Listing <?= $username; ?>
 			</h2>
-	
-				<!-- <div class="form-group">
-					<label for="listing_date">Date:</label>
-	        			<input type="date" id="listing_date" name="listing_date" placeholder="Listing Date" class="form-control">
-	        		</div>
-	        	</div> -->
 
 	        	<div class="form-group">
 	        		<label for="item_name">Item:</label>
@@ -156,28 +131,16 @@ pageController($dbc);
 	          		</div>
 	          	</div>
 
-	          	<!-- <div class="form-group">
-	          		<label for="status" class="control-label col-sm-2">Status:</label>
-	          		<div class="col-sm-10">
-	          			<input list="status" id="status" name="status" placeholder="status" class="form-control">
-	          			<datalist id="status">
-	          				<option value="active">
-	          				<option value="inactive">
-	          				<option value="free">
-	          			</datalist>
-	          		</div>
-	          	</div> -->
-
 	          	<div class="form-group">        
       				<div class="col-sm-offset-2 col-sm-10">
         				<input class="submit-button" type="submit" value="submit">
       				</div>
     			</div>	        	
    			</form>
-   			</div>
-			  	<?php require_once('../views/partials/footer.php') ?>
-			</div>
+   			
 		</div>
 	</div>
+<?php require_once '../views/partials/footer.php'; ?>
+<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

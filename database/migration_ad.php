@@ -7,7 +7,6 @@ echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
 $dbc->exec('DROP TABLE IF EXISTS ads');
 
-
 $adTable = 'CREATE TABLE ads (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	user_id INT UNSIGNED NOT NULL,
