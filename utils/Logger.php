@@ -1,11 +1,10 @@
 <?php
-
 // date.timezone = "US/Central";
 
 date_default_timezone_set("US/Central");
 
-class Log {
-	
+class Log 
+{
 	protected $fileName;
 
 	protected $handle;
@@ -16,18 +15,18 @@ class Log {
 		$this->setHandle();
 	}
 
-	protected function setFilename($prefix = 'log'){
+	protected function setFilename($prefix = 'log')
+	{
 		$this->fileName= "../utils/data/" . $prefix . date('Y-m-d'). ".log";
 	}
 
-	public function setHandle() {
-
+	public function setHandle() 
+	{
 		$this->handle = fopen($this->fileName, 'a');
 	}
 
 	public function getFileName() 
 	{
-
 		return $this->fileName;
 	}
 
@@ -59,13 +58,9 @@ class Log {
 		$this->logMessage("ERROR", $message);
 	}
 
-
-
-
 	public function __destruct() 
 	{
 	    fclose($this->handle);
 	}
-
 }
 ?> 

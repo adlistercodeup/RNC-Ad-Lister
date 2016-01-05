@@ -58,8 +58,7 @@ function pageController($dbc)
 		$description = Input::getString('description');
 	} catch (Exception $e) {
 		array_push($errors, $e->getMessage());
-	} 
-	 
+	} 	 
 	
 	if(!empty($_POST))
 	{
@@ -93,19 +92,17 @@ pageController($dbc);
 <!doctype html>
 <html lang="en">
 <head>
-	<?php require_once('../views/partials/head.php'); ?>
+<?php require_once('../views/partials/head.php'); ?>
 	<title>Creating Ad</title>
 </head>
 <body>
 	<div class="container">
-	<!-- 	<?php require_once('../views/partials/header.php') ?> -->
   	<?php require_once('../views/partials/navbar.php') ?>
 
 		<div class="col-md-6"class= "form_users">
 			<form method="POST" role="form" action="ads.create.php">
 
-			<h2>Create a New Listing 
-			<?= $username; ?>
+			<h2>Create a New Listing <?= $username; ?>
 			</h2>
 
 	        	<div class="form-group">
@@ -143,7 +140,7 @@ pageController($dbc);
    			
 		</div>
 	</div>
-	<?php require_once '../views/partials/footer.php'; ?>
-	<?php require_once '../views/partials/script.php'; ?>
+<?php require_once '../views/partials/footer.php'; ?>
+<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

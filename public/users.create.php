@@ -48,7 +48,6 @@ function insertData($dbc)
 		if (Input::notEmpty('username') && Input::notEmpty('pwd') && Input::notEmpty('firstname') && Input::notEmpty('lastname') && Input::notEmpty('email') && Input::notEmpty('zipcode')) 
 		{
 			// create new instance of user class
-
 			$user = new User;
 
 				$user->first_name = $firstName;
@@ -64,7 +63,6 @@ function insertData($dbc)
 
 			header("Location:index.php");
 			die();
-
 
 				// $userData = 'INSERT INTO user_account (first_name, last_name, user_name, password, email, zipcode)
 				// 			VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
@@ -83,36 +81,23 @@ function insertData($dbc)
 				// } catch (Exception $e) {
 				// 	$errors[] = $e->getMessage();
 				// }
-
-
-				
 		}
 	}
 	return $errors;
 }
-
 insertData($dbc);
-
-
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
-	<?php require_once('../views/partials/head.php'); ?>
+<?php require_once('../views/partials/head.php'); ?>
 	<title>Create User</title>
 </head>
 <body>
 	<div class="container">
-	<?php require_once('../views/partials/header.php') ?> 
 	<?php require_once('../views/partials/navbar.php') ?>
-		<div id="message">
 
-
-
-
-
-		</div>
 		<div class="col-md-6"class= "form_users">
 			<form role="form" method="post" action="users.create.php">
 	
@@ -171,8 +156,6 @@ insertData($dbc);
 	</div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	</div>
 </body>

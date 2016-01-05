@@ -23,8 +23,6 @@ class Model {
         //if the database is not connected, then connect
         if (!isset(static::$dbc)) 
         {
-            // Get new instance of PDO object
-
         // $dbc = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
          $dbc = new PDO('mysql:host=' . $_ENV["DB_HOST"] . ';dbname=' . $_ENV["DB_NAME"], $_ENV["DB_USER"], $_ENV["DB_PASS"]);
 
@@ -140,7 +138,7 @@ class Model {
     public function save()
     {
     	$message = "";
-       	//Ensure there are attributes before attempting to save
+     
     	if (!empty ($this->attributes))
     	{
         	//Perform the proper action - if the `id` is set, this is an update, if not it is a insert
@@ -193,4 +191,4 @@ class Model {
 		return $message;
     }
 }
-//TODO:  All queries should not have variables...instead we should be binding the values
+

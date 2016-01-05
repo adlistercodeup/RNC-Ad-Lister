@@ -9,28 +9,13 @@ class Auth
 	{
 		$user = User::findUser($username);
 
-
-		self::$username = $user->attributes['username'];
-		self::$password = $user->attributes['password'];
-
-		// Had a conflict. Not sure which one is right.
-		// self::$username = $user->user_name;
-		// self::$password = $user->password;
-
+		self::$username = $user->user_name;
+		self::$password = $user->password;
 	}
 
-	
 	public static function attempt($username, $password) 
 	{
-
-		$log = new Log();
-
 		self::setStatic($username);
-
-		var_dump($password);
-		var_dump(self::$password);
-
-		var_dump(password_verify($password, self::$password));
 
 		if (($username == self::$username) && (password_verify(	$password, self::$password))) 
 		{
@@ -73,7 +58,7 @@ class Auth
 	public static function logout()
 	{	
 		if (isset($_SESSION['LOGGED_IN_USER'])) 
-	{
+		{
 			unset($_SESSION['LOGGED_IN_USER']);
 		}
 	}

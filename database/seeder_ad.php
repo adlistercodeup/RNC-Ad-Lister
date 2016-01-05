@@ -16,8 +16,8 @@ $adLists = [
 $stmt = $dbc->prepare('INSERT INTO ads (user_id, listing_date, item_name, price, image, description, status)
 						VALUES (:user_id, :listing_date, :item_name, :price, :image, :description, :status)');
 
-foreach ($adLists as $adList) {
-
+foreach ($adLists as $adList) 
+{
 	$stmt->bindValue(':user_id', $adList['user_id'], PDO::PARAM_INT);
 	$stmt->bindValue(':listing_date', $adList['listing_date'], PDO::PARAM_STR);
 	$stmt->bindValue(':item_name', $adList['item_name'], PDO::PARAM_STR);

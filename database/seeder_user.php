@@ -14,11 +14,10 @@ $userLists = [
 ];
 
 
-foreach ($userLists as $userList) {
-
+foreach ($userLists as $userList) 
+{
 	$userData = 'INSERT INTO user_account (first_name, last_name, user_name, password, email, zipcode)
 							VALUES (:first_name, :last_name, :user_name, :password, :email, :zipcode)';
-
 
 				$stmt = $dbc->prepare($userData);
 			
@@ -30,5 +29,4 @@ foreach ($userLists as $userList) {
 				$stmt->bindValue(':zipcode', $userList['zipcode'], PDO::PARAM_INT);
 
 	$stmt->execute();
-
 }
