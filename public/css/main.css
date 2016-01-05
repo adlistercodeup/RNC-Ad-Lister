@@ -7,6 +7,9 @@ h1, h2 {
 label {
 	color: #675038;
 }
+.logInMessage {
+	text-align: center;
+}
 .navbar-inverse .navbar-brand {
     color: #91ECFC;
 }

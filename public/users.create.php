@@ -59,7 +59,7 @@ function insertData($dbc)
 
 			$user->save();
 
-			$_SESSION['logInMessage'] = "Thanks for signing up. Please sign in to access your profile!!!";
+			$_SESSION['logInMessage'] = "Thanks for signing up. Please login to access your profile!!!";
 
 			header("Location:index.php");
 			die();
