@@ -45,6 +45,3 @@ $dbc->exec($adTable);
 
 
 
-
-
-
