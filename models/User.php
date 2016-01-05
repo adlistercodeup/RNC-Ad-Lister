@@ -1,14 +1,10 @@
 <?php
 
-
 require_once 'BaseModel.php';
-
 
 class User extends Model 
 {
-
 	protected static $table = 'user_account';
-
 // finduserbyusername
 
 	public static function findUser($user_name)
@@ -32,11 +28,6 @@ class User extends Model
         }
         return $instance;
     }	
-
-
-
-
-
 }
 
 

@@ -13,7 +13,6 @@ function endSession()
             $params["secure"], $params["httponly"]
         );
     }
-
     // Finally, destroy the session.
     session_destroy();
 }
@@ -26,23 +25,15 @@ endSession();
 <!doctype html>
 <html lang="en">
 <head>
-    <?php require_once('../views/partials/head.php'); ?>
+<?php require_once('../views/partials/head.php'); ?>
     <title>Where treasures are found and shared.</title>
 </head>
 
 <body>
     <div class="container">
-
-        <?php include '../views/partials/navbar.php'; ?>
-
-        <h1>Logged out</h1>
-
-        <div id="footer">
-        <?php include '../views/partials/footer.php'; ?>
-        </div>
-        
+    <?php include '../views/partials/navbar.php'; ?>
+        <h1>Logged out</h1>       
     </div>
-
+<?php include '../views/partials/footer.php'; ?>
 </body>
-
 </html>

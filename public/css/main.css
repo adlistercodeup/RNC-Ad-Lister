@@ -1,12 +1,9 @@
-
 body {
 	background-color: #FAEBD7;
 }
-
 h1, h2 {
 	color: #675038;
 }
-
 label {
 	color: #675038;
 }
@@ -35,13 +32,11 @@ label {
 	font-size: 16px;
 	color: #1EAED0;
 }
-
 /* navbar search*/
 #search {
 	font-family: helvetica;
 	top: 20px;
 }
-
 .submit-button {
 	color: #675038;
 	font-size: 16px;
@@ -49,36 +44,27 @@ label {
 	border: #675038;
 	height: 35px;
 	border: solid 2px #675038;
-
 }
-
 .form-group {
 	background-color: #FAEBD7;
 }
-
 .search-block {
-
 	border: #1EAED0;
 	height: 30px;
     width: 300px;
     margin-top: 10px;
     margin-left: 80px;
 }
-/**/
-
 .form-control {
 	width: 50%;
 	color: #675038;
 }
-
 .form-users {
 	left: 200px;
 }
-
 .login {
 	top: 50px;
 }
-
 .container-fluid {
 	background-color: #675038;
 }
@@ -93,7 +79,6 @@ label {
 	padding-top: 75px;
     text-align: center;
 }
-
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
       width: 40%;
@@ -103,7 +88,6 @@ label {
 .testimonial {
 	color: #675038;
 }
-
 #sell-stuff {
 	position: relative;
 	padding-top: 75px;
@@ -113,14 +97,11 @@ label {
 	font-size: 36px;
 	font-weight: bold;
 	text-align: center;
-
 }
-
 .carousel-caption {
 	top: 200px;
 }
 .btn-default {
-
 	position: relative;
 	margin: auto;
 	color: #675038;
@@ -131,7 +112,6 @@ label {
 	font-weight: bold;
 	background-color: #91ECFC;
 	border: #675038 solid 5px;
-
 }
 
 .text-muted {
@@ -140,7 +120,6 @@ label {
 #welcome {
 	text-align: center;
 }
-
 .btn-file {
     position: relative;
     overflow: hidden;
