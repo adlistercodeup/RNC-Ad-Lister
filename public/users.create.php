@@ -151,12 +151,12 @@ insertData($dbc);
 				</div>
 			</form>
 		</div>
-	<div>
-		<?php include '../views/partials/footer.php'; ?>
-	</div>
+
 
 
 
 	</div>
+<?php require_once '../views/partials/footer.php'; ?>
+<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

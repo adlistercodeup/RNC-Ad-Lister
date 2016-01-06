@@ -34,6 +34,8 @@ endSession();
     <?php include '../views/partials/navbar.php'; ?>
         <h1>Logged out</h1>       
     </div>
-<?php include '../views/partials/footer.php'; ?>
+
+<?php require_once '../views/partials/footer.php'; ?>
+<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>

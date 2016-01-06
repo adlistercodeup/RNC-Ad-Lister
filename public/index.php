@@ -63,8 +63,8 @@ including requires for classes -->
 		<a href="ads.create.php" class="btn btn-default">Sell Your Stuff</a>
 		<a href="ads.index.php" class="btn btn-default">SHOP</a>
 
-	<?php require_once '../views/partials/footer.php'; ?>
-	<?php require_once '../views/partials/script.php'; ?>
+<?php require_once '../views/partials/footer.php'; ?>
+<?php require_once '../views/partials/script.php'; ?>
 </body>
 </html>
 
